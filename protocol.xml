@@ -1,114 +1,853 @@
-﻿<?xml version="1.0" encoding="utf-8" ?>
+﻿<?xml version="1.0" encoding="utf-8"?>
+
+
+
 <!--
 
-****************************************************************************
-*  Copyright (c) 2024,  Skyline Communications NV  All Rights Reserved.    *
-****************************************************************************
-
-By using this driver, you expressly agree with the usage terms and
-conditions set out below.
-This driver and all related materials are protected by copyrights and
-other intellectual property rights that exclusively belong
-to Skyline Communications.
-
-A user license granted for this driver is strictly for personal use only.
-This driver may not be used in any way by anyone without the prior
-written consent of Skyline Communications. Any sublicensing of this
-driver is forbidden.
-
-Any modifications to this driver by the user are only allowed for
-personal use and within the intended purpose of the driver,
-and will remain the sole responsibility of the user.
-Skyline Communications will not be responsible for any damages or
-malfunctions whatsoever of the driver resulting from a modification
-or adaptation by the user.
-
-The content of this driver is confidential information.
-The user hereby agrees to keep this confidential information strictly
-secret and confidential and not to disclose or reveal it, in whole
-or in part, directly or indirectly to any person, entity, organization
-or administration without the prior written consent of
-Skyline Communications.
-
-Any inquiries can be addressed to:
-
-	Skyline Communications NV
-	Ambachtenstraat 33
-	B-8870 Izegem
-	Belgium
-	Tel.	: +32 51 31 35 69
-	Fax.	: +32 51 31 01 29
-	E-mail	: info@skyline.be
-	Web		: www.skyline.be
-	Contact	: Ben Vandenberghe
+***********************************************
+*  Copyright (c), Skyline Communications NV.  *
+***********************************************
 
 -->
 
 <Protocol xmlns="http://www.skyline.be/protocol">
-	<Name>Exercise Encoder/Decoder</Name>
-	<Description>Exercise Encoder/Decoder DataMiner connector</Description>
+	<Name>Encoder - Decoder</Name>
+	<Description></Description>
 	<Version>1.0.0.1</Version>
-	<IntegrationID>DMS-DRV-</IntegrationID>
+	<IntegrationID>DMS-DRV-9151</IntegrationID>
 	<Provider>Skyline Communications</Provider>
-	<Vendor></Vendor>
-	<VendorOID>1.3.6.1.4.1.8813.2.</VendorOID>
-	<DeviceOID></DeviceOID>
-	<ElementType></ElementType>
-	<Type relativeTimers="true">virtual</Type>
-	<Display defaultPage="General" pageOrder="General"/>
+	<Vendor>Skyline Communications</Vendor>
+	<VendorOID>1.3.6.1.4.1.8813.2.XX</VendorOID>
+	<DeviceOID>XX</DeviceOID>
 	<SNMP includepages="true">auto</SNMP>
+	<ElementType>Example</ElementType>
+	<Type relativeTimers="true" options=";unicode">virtual</Type>
+	<Display defaultPage="General" pageOrder="General" wideColumnPages=""></Display>
 
 	<Compliancies>
 		<CassandraReady>true</CassandraReady>
-		<MinimumRequiredVersion>10.1.0.0 - 9966</MinimumRequiredVersion>
+		<MinimumRequiredVersion>10.4.0.0 - 14003</MinimumRequiredVersion>
 	</Compliancies>
 
 	<Params>
-		<Param id="2">
-			<Name>AfterStartup</Name>
-			<Description>After Startup</Description>
-			<Type>dummy</Type>
+		<Param id="1" save="true">
+			<Name>encoderStatus</Name>
+			<Description>Encoder Status</Description>
+			<Type>read</Type>
+			<Information>
+				<Subtext>Encoder description</Subtext>
+			</Information>
+			<Interprete>
+				<RawType>numeric text</RawType>
+				<Type>double</Type>
+				<LengthType>next param</LengthType>
+				<DefaultValue>0</DefaultValue>
+			</Interprete>
+			<Display>
+				<RTDisplay>true</RTDisplay>
+				<Positions>
+					<Position>
+						<Page>General</Page>
+						<Column>0</Column>
+						<Row>0</Row>
+					</Position>
+				</Positions>
+			</Display>
+			<Measurement>
+				<Type>discreet</Type>
+				<Discreets>
+					<Discreet>
+						<Display>Enabled</Display>
+						<Value>1</Value>
+					</Discreet>
+					<Discreet>
+						<Display>Disabled</Display>
+						<Value>0</Value>
+					</Discreet>
+				</Discreets>
+			</Measurement>
+		</Param>
+		<Param id="51" setter="true">
+			<Name>encoderStatus</Name>
+			<Description>Encoder Status</Description>
+			<Type>write</Type>
+			<Interprete>
+				<RawType>numeric text</RawType>
+				<Type>double</Type>
+				<LengthType>next param</LengthType>
+			</Interprete>
+			<Display>
+				<RTDisplay>true</RTDisplay>
+				<Positions>
+					<Position>
+						<Page>General</Page>
+						<Column>0</Column>
+						<Row>0</Row>
+					</Position>
+				</Positions>
+			</Display>
+			<Measurement>
+				<Type>togglebutton</Type>
+				<Discreets>
+					<Discreet>
+						<Display>Enabled</Display>
+						<Value>1</Value>
+					</Discreet>
+					<Discreet>
+						<Display>Disabled</Display>
+						<Value>0</Value>
+					</Discreet>
+				</Discreets>
+			</Measurement>
+		</Param>
+
+
+		<Param id="2"  save="true">
+			<Name>decoderStatus</Name>
+			<Description>Decoder Status</Description>
+			<Type>read</Type>
+			<Information>
+				<Subtext>Decoder description</Subtext>
+			</Information>
+			<Interprete>
+				<RawType>numeric text</RawType>
+				<Type>double</Type>
+				<LengthType>next param</LengthType>
+				<DefaultValue>0</DefaultValue>
+			</Interprete>
+			<Display>
+				<RTDisplay>true</RTDisplay>
+				<Positions>
+					<Position>
+						<Page>General</Page>
+						<Column>1</Column>
+						<Row>0</Row>
+					</Position>
+				</Positions>
+			</Display>
+			<Measurement>
+				<Type>discreet</Type>
+				<Discreets>
+					<Discreet>
+						<Display>Enabled</Display>
+						<Value>1</Value>
+					</Discreet>
+					<Discreet>
+						<Display>Disabled</Display>
+						<Value>0</Value>
+					</Discreet>
+				</Discreets>
+			</Measurement>
+		</Param>
+		<Param id="52" setter="true">
+			<Name>decoderStatus</Name>
+			<Description>Decoder Status</Description>
+			<Type>write</Type>
+			<Interprete>
+				<RawType>numeric text</RawType>
+				<Type>double</Type>
+				<LengthType>next param</LengthType>
+			</Interprete>
+			<Display>
+				<RTDisplay>true</RTDisplay>
+				<Positions>
+					<Position>
+						<Page>General</Page>
+						<Column>1</Column>
+						<Row>0</Row>
+					</Position>
+				</Positions>
+			</Display>
+			<Measurement>
+				<Type>togglebutton</Type>
+				<Discreets>
+					<Discreet>
+						<Display>Enabled</Display>
+						<Value>1</Value>
+					</Discreet>
+					<Discreet>
+						<Display>Disabled</Display>
+						<Value>0</Value>
+					</Discreet>
+				</Discreets>
+			</Measurement>
+		</Param>
+
+		<Param id="3" trending="true">
+			<Name>encoderCurrentCompressedBitrate</Name>
+			<Description>Current Compressed Bitrate (Encoder)</Description>
+			<Type>read</Type>
+			<Information>
+			</Information>
+			<Interprete>
+				<RawType>numeric text</RawType>
+				<Type>double</Type>
+				<LengthType>next param</LengthType>
+				<DefaultValue>0</DefaultValue>
+				<Exceptions>
+					<Exception id="1" value="-1">
+						<Display state="disabled">Not Available</Display>
+						<Value>-1</Value>
+					</Exception>
+				</Exceptions>
+			</Interprete>
+			<Display>
+				<RTDisplay>true</RTDisplay>
+				<Units>Mbps</Units>
+				<Range>
+					<Low>0</Low>
+					<High>10000</High>
+				</Range>
+				<Positions>
+					<Position>
+						<Page>General</Page>
+						<Column>0</Column>
+						<Row>1</Row>
+					</Position>
+				</Positions>
+
+			</Display>
+
+			<Measurement>
+				<Type>number</Type>
+			</Measurement>
+
+		</Param>
+
+		<Param id="4" trending="true">
+			<Name>autoChromaWeight</Name>
+			<Description>Auto Chroma Weight</Description>
+			<Type>read</Type>
+			<Information>
+			</Information>
+			<Interprete>
+				<RawType>numeric text</RawType>
+				<Type>double</Type>
+				<LengthType>next param</LengthType>
+				<DefaultValue>0</DefaultValue>
+
+				<Exceptions>
+					<Exception id="1" value="-1">
+						<Display state="disabled">Not Available</Display>
+						<Value>-1</Value>
+					</Exception>
+				</Exceptions>
+			</Interprete>
+			<Display>
+				<RTDisplay>true</RTDisplay>
+				<Positions>
+					<Position>
+						<Page>General</Page>
+						<Column>0</Column>
+						<Row>2</Row>
+					</Position>
+				</Positions>
+			</Display>
+			<Measurement>
+				<Type>discreet</Type>
+				<Discreets>
+					<Discreet>
+						<Display>Enabled</Display>
+						<Value>1</Value>
+					</Discreet>
+					<Discreet>
+						<Display>Disabled</Display>
+						<Value>0</Value>
+					</Discreet>
+				</Discreets>
+			</Measurement>
+		</Param>
+		<Param id="54" setter="true">
+			<Name>autoChromaWeight</Name>
+			<Description>Auto Chroma Weight</Description>
+			<Type>write</Type>
+			<Interprete>
+				<RawType>numeric text</RawType>
+				<Type>double</Type>
+				<LengthType>next param</LengthType>
+			</Interprete>
+			<Display>
+				<RTDisplay>true</RTDisplay>
+				<Positions>
+					<Position>
+						<Page>General</Page>
+						<Column>0</Column>
+						<Row>2</Row>
+					</Position>
+				</Positions>
+			</Display>
+			<Measurement>
+				<Type>togglebutton</Type>
+				<Discreets>
+					<Discreet>
+						<Display>Enabled</Display>
+						<Value>1</Value>
+					</Discreet>
+					<Discreet>
+						<Display>Disabled</Display>
+						<Value>0</Value>
+					</Discreet>
+				</Discreets>
+			</Measurement>
+		</Param>
+
+		<Param id="5" trending="true">
+			<Name>chromaWeight</Name>
+			<Description>Chroma Weight</Description>
+			<Type>read</Type>
+			<Information>
+			</Information>
+			<Interprete>
+				<RawType>numeric text</RawType>
+				<Type>double</Type>
+				<LengthType>next param</LengthType>
+				<Exceptions>
+					<Exception id="1" value="-1">
+						<Display state="disabled">Not Available</Display>
+						<Value>-1</Value>
+					</Exception>
+				</Exceptions>
+			</Interprete>
+			<Display>
+				<RTDisplay>true</RTDisplay>
+				<Units>%</Units>
+				<Range>
+					<Low>0</Low>
+					<High>100</High>
+				</Range>
+				<Positions>
+					<Position>
+						<Page>General</Page>
+						<Column>0</Column>
+						<Row>3</Row>
+					</Position>
+				</Positions>
+			</Display>
+			<Measurement>
+				<Type>analog</Type>
+			</Measurement>
+		</Param>
+
+		<Param id="6" trending="true">
+			<Name>losslessMode</Name>
+			<Description>Lossless Mode</Description>
+			<Type>read</Type>
+			<Information>
+			</Information>
+			<Interprete>
+				<RawType>numeric text</RawType>
+				<Type>double</Type>
+				<LengthType>next param</LengthType>
+				<DefaultValue>0</DefaultValue>
+				<Exceptions>
+					<Exception id="1" value="-1">
+						<Display state="disabled">Not Available</Display>
+						<Value>-1</Value>
+					</Exception>
+				</Exceptions>
+			</Interprete>
+			<Display>
+				<RTDisplay>true</RTDisplay>
+				<Positions>
+					<Position>
+						<Page>General</Page>
+						<Column>0</Column>
+						<Row>4</Row>
+					</Position>
+				</Positions>
+			</Display>
+			<Measurement>
+				<Type>discreet</Type>
+				<Discreets>
+					<Discreet>
+						<Display>Enabled</Display>
+						<Value>1</Value>
+					</Discreet>
+					<Discreet>
+						<Display>Disabled</Display>
+						<Value>0</Value>
+					</Discreet>
+				</Discreets>
+			</Measurement>
+		</Param>
+		<Param id="56" setter="true">
+			<Name>losslessMode</Name>
+			<Description>Lossless Mode</Description>
+			<Type>write</Type>
+			<Interprete>
+				<RawType>numeric text</RawType>
+				<Type>double</Type>
+				<LengthType>next param</LengthType>
+			</Interprete>
+			<Display>
+				<RTDisplay>true</RTDisplay>
+				<Positions>
+					<Position>
+						<Page>General</Page>
+						<Column>0</Column>
+						<Row>4</Row>
+					</Position>
+				</Positions>
+			</Display>
+			<Measurement>
+				<Type>togglebutton</Type>
+				<Discreets>
+					<Discreet>
+						<Display>Enabled</Display>
+						<Value>1</Value>
+					</Discreet>
+					<Discreet>
+						<Display>Disabled</Display>
+						<Value>0</Value>
+					</Discreet>
+				</Discreets>
+			</Measurement>
+		</Param>
+
+		<Param id="7" trending="true">
+			<Name>decoderCurrentCompressedBitrate</Name>
+			<Description>Current Compressed Bitrate (Decoder)</Description>
+			<Type>read</Type>
+			<Information>
+			</Information>
+			<Interprete>
+				<RawType>numeric text</RawType>
+				<Type>double</Type>
+				<LengthType>next param</LengthType>
+				<DefaultValue>0</DefaultValue>
+				<Exceptions>
+					<Exception id="1" value="-1">
+						<Display state="disabled">Not Available</Display>
+						<Value>-1</Value>
+					</Exception>
+				</Exceptions>
+			</Interprete>
+			<Display>
+				<RTDisplay>true</RTDisplay>
+				<Units>Mbps</Units>
+				<Range>
+					<Low>0</Low>
+					<High>10000</High>
+				</Range>
+				<Positions>
+					<Position>
+						<Page>General</Page>
+						<Column>1</Column>
+						<Row>1</Row>
+					</Position>
+				</Positions>
+			</Display>
+			<Measurement>
+				<Type>number</Type>
+			</Measurement>
+		</Param>
+
+		<Param id="8" trending="true">
+			<Name>progressionOrder</Name>
+			<Description>Progression Order</Description>
+			<Type>read</Type>
+			<Information>
+			</Information>
+			<Interprete>
+				<RawType>numeric text</RawType>
+				<Type>double</Type>
+				<LengthType>next param</LengthType>
+				<Exceptions>
+					<Exception id="1" value="-1">
+						<Display state="disabled">Not Available</Display>
+						<Value>-1</Value>
+					</Exception>
+				</Exceptions>
+			</Interprete>
+			<Display>
+				<RTDisplay>true</RTDisplay>
+				<Positions>
+					<Position>
+						<Page>General</Page>
+						<Column>1</Column>
+						<Row>2</Row>
+					</Position>
+				</Positions>
+			</Display>
+			<Measurement>
+				<Type>discreet</Type>
+				<Discreets>
+					<Discreet>
+						<Display>LCRP</Display>
+						<Value>0</Value>
+					</Discreet>
+					<Discreet>
+						<Display>RLCP</Display>
+						<Value>1</Value>
+					</Discreet>
+					<Discreet>
+						<Display>RPCL</Display>
+						<Value>2</Value>
+					</Discreet>
+					<Discreet>
+						<Display>PCRL</Display>
+						<Value>3</Value>
+					</Discreet>
+					<Discreet>
+						<Display>CPRL</Display>
+						<Value>4</Value>
+					</Discreet>
+				</Discreets>
+			</Measurement>
+		</Param>
+		<Param id="58" setter="true" >
+			<Name>progressionOrder</Name>
+			<Description>Progression Order</Description>
+			<Type>write</Type>
+			<Interprete>
+				<RawType>numeric text</RawType>
+				<Type>double</Type>
+				<LengthType>next param</LengthType>
+			</Interprete>
+			<Display>
+				<RTDisplay>true</RTDisplay>
+				<Positions>
+					<Position>
+						<Page>General</Page>
+						<Column>1</Column>
+						<Row>2</Row>
+					</Position>
+				</Positions>
+			</Display>
+			<Measurement>
+				<Type>discreet</Type>
+				<Discreets>
+					<Discreet>
+						<Display>LCRP</Display>
+						<Value>0</Value>
+					</Discreet>
+					<Discreet>
+						<Display>RLCP</Display>
+						<Value>1</Value>
+					</Discreet>
+					<Discreet>
+						<Display>RPCL</Display>
+						<Value>2</Value>
+					</Discreet>
+					<Discreet>
+						<Display>PCRL</Display>
+						<Value>3</Value>
+					</Discreet>
+					<Discreet>
+						<Display>CPRL</Display>
+						<Value>4</Value>
+					</Discreet>
+				</Discreets>
+			</Measurement>
+		</Param>
+
+		<Param id="9" trending="true">
+			<Name>codeBlockWidth</Name>
+			<Description>Code Block Width</Description>
+			<Type>read</Type>
+			<Information>
+			</Information>
+			<Interprete>
+				<RawType>numeric text</RawType>
+				<Type>double</Type>
+				<LengthType>next param</LengthType>
+				<DefaultValue>0</DefaultValue>
+				<Exceptions>
+					<Exception id="1" value="-1">
+						<Display state="disabled">Not Available</Display>
+						<Value>-1</Value>
+					</Exception>
+				</Exceptions>
+			</Interprete>
+			<Display>
+				<RTDisplay>true</RTDisplay>
+				<Units>px</Units>
+				<Positions>
+					<Position>
+						<Page>General</Page>
+						<Column>1</Column>
+						<Row>3</Row>
+					</Position>
+				</Positions>
+			</Display>
+			<Measurement>
+				<Type>number</Type>
+			</Measurement>
+		</Param>
+		<Param id="10" trending="true">
+			<Name>codeBlockHeight</Name>
+			<Description>Code Block Height</Description>
+			<Type>read</Type>
+			<Information>
+			</Information>
+			<Interprete>
+				<RawType>numeric text</RawType>
+				<Type>double</Type>
+				<LengthType>next param</LengthType>
+				<DefaultValue>0</DefaultValue>
+				<Exceptions>
+					<Exception id="1" value="-1">
+						<Display state="disabled">Not Available</Display>
+						<Value>-1</Value>
+					</Exception>
+				</Exceptions>
+			</Interprete>
+			<Display>
+				<RTDisplay>true</RTDisplay>
+				<Units>px</Units>
+				<Positions>
+					<Position>
+						<Page>General</Page>
+						<Column>1</Column>
+						<Row>4</Row>
+					</Position>
+				</Positions>
+			</Display>
+			<Measurement>
+				<Type>number</Type>
+			</Measurement>
+		</Param>
+		<Param id="11">
+			<Name>fixedZeroValue</Name>
+			<Description>Fixed 0 Value</Description>
+			<Type>read</Type>
+			<Interprete>
+				<RawType>numeric text</RawType>
+				<Type>double</Type>
+				<LengthType>next param</LengthType>
+				<Value>0</Value>
+			</Interprete>
+		</Param>
+		<Param id="12">
+			<Name>placeholderNotAvailableValue</Name>
+			<Description>Placeholder Not Available Value</Description>
+			<Type>read</Type>
+			<Interprete>
+				<RawType>numeric text</RawType>
+				<Type>double</Type>
+				<LengthType>next param</LengthType>
+				<Value>-1</Value>
+				<DefaultValue>-1</DefaultValue>
+			</Interprete>
+		</Param>
+		<Param id="13">
+			<Name>fixedOneValue</Name>
+			<Description>Fixed 1 Value</Description>
+			<Type>fixed</Type>
+			<Interprete>
+				<RawType>unsigned number</RawType>
+				<Type>double</Type>
+				<LengthType>fixed</LengthType>
+				<Length>1</Length>
+				<Value>0x01</Value>
+			</Interprete>
 		</Param>
 	</Params>
 
 	<QActions>
-		<QAction id="1" name="Precompiled Code" encoding="csharp" options="precompile" />
-		<QAction id="2" name="After Startup" encoding="csharp" triggers="2" />
 	</QActions>
 
 	<Groups>
-		<Group id="2">
-			<Name>After Startup</Name>
-			<Description>After Startup</Description>
-			<Type>poll action</Type>
-			<Content>
-				<Action>2</Action>
-			</Content>
-		</Group>
 	</Groups>
 
 	<Triggers>
 		<Trigger id="1">
-			<Name>After Startup</Name>
-			<On>protocol</On>
-			<Time>after startup</Time>
+			<Name>encoderStatusChanged</Name>
+			<On id="51">parameter</On>
+			<Time>change</Time>
 			<Type>action</Type>
+			<Condition>
+				id:51 == 1
+			</Condition>
 			<Content>
 				<Id>1</Id>
+
+				<Id else="true">5</Id>
+			</Content>
+		</Trigger>
+		<Trigger id="2">
+			<Name>decoderStatusChanged</Name>
+			<On id="52">parameter</On>
+			<Time>change</Time>
+			<Type>action</Type>
+			<Condition>
+				id:52 == 1
+			</Condition>
+			<Content>
+				<Id>2</Id>
+				<Id else="true">4</Id>
+			</Content>
+		</Trigger>
+		<Trigger id="3">
+			<Name>onChangeReadEncoder</Name>
+			<On id="1">parameter</On>
+			<Condition>id:1 == 0</Condition>
+			<Time>change</Time>
+			<Type>trigger</Type>
+			<Content>
+				<Id>4</Id>
+				<Id>7</Id>
+				<Id else="true">5</Id>
+				<Id else="true">6</Id>
+			</Content>
+		</Trigger>
+		<Trigger id="4">
+			<Name>disableAllEncoderParams</Name>
+			<Type>action</Type>
+			<Content>
+				<Id>3</Id>
+				<Id>6</Id>
+				<Id>7</Id>
+				<Id>8</Id>
+			</Content>
+		</Trigger>
+		<Trigger id="5">
+			<Name>disableAllDecoderParams</Name>
+			<Type>action</Type>
+			<Content>
+				<Id>9</Id>
+				<Id>10</Id>
+				<Id>11</Id>
+				<Id>12</Id>
+			</Content>
+		</Trigger>
+		<Trigger id="6">
+			<Name>enableAllEncoderParams</Name>
+			<Type>action</Type>
+			<Content>
+				<Id>13</Id>
+				<Id>14</Id>
+				<Id>15</Id>
+				<Id>20</Id>
+
+			</Content>
+		</Trigger>
+		<Trigger id="7">
+			<Name>enableAllDecoderParams</Name>
+			<Type>action</Type>
+			<Content>
+				<Id>16</Id>
+				<Id>17</Id>
+				<Id>18</Id>
+				<Id>19</Id>
+
+			</Content>
+		</Trigger>
+		<Trigger id="8">
+			<Name>onChangeReadDecoder</Name>
+			<On id="2">parameter</On>
+			<Condition>id:2 == 0</Condition>
+			<Time>change</Time>
+			<Type>trigger</Type>
+			<Content>
+				<Id>5</Id>
+				<Id>6</Id>
+				<Id else="true">4</Id>
+				<Id else="true">7</Id>
 			</Content>
 		</Trigger>
 	</Triggers>
 
 	<Actions>
 		<Action id="1">
-			<Name>After Startup Group</Name>
-			<On id="2">group</On>
-			<Type>execute next</Type>
+			<Name>disableDecoder</Name>
+			<On id="2">parameter</On>
+			<Type id="11">copy</Type>
 		</Action>
 		<Action id="2">
-			<Name>After Startup QAction</Name>
+			<Name>disableEncoder</Name>
+			<On id="1">parameter</On>
+			<Type id="11">copy</Type>
+		</Action>
+		<Action id="3">
+			<Name>disableCurrentCompressedBitrateEncoder</Name>
+			<On id="3">parameter</On>
+			<Type id="12">copy</Type>
+		</Action>
+		<Action id="4">
+			<Name>enableEncoder</Name>
+			<On id="1">parameter</On>
+			<Type id="13">copy</Type>
+		</Action>
+		<Action id="5">
+			<Name>enableDecoder</Name>
 			<On id="2">parameter</On>
-			<Type>run actions</Type>
+			<Type id="13">copy</Type>
+		</Action>
+		<Action id="6">
+			<Name>disableAutoChromaWeight</Name>
+			<On id="54">parameter</On>
+			<Type id="12">copy</Type>
+		</Action>
+		<Action id="7">
+			<Name>disableChromaWeight</Name>
+			<On id="5">parameter</On>
+			<Type id="12">copy</Type>
+		</Action>
+		<Action id="8">
+			<Name>disableLosslessMode</Name>
+			<On id="56">parameter</On>
+			<Type id="12">copy</Type>
+		</Action>
+		<Action id="9">
+			<Name>disableCurrentCompressedBitrateDecoder</Name>
+			<On id="7">parameter</On>
+			<Type id="12">copy</Type>
+		</Action>
+		<Action id="10">
+			<Name>disableProgressionOrder</Name>
+			<On id="58">parameter</On>
+			<Type id="12">copy</Type>
+		</Action>
+		<Action id="11">
+			<Name>disableCodeBlockWidth</Name>
+			<On id="9">parameter</On>
+			<Type id="12">copy</Type>
+		</Action>
+		<Action id="12">
+			<Name>disableCodeBlockHeight</Name>
+			<On id="10">parameter</On>
+			<Type id="12">copy</Type>
+		</Action>
+		<Action id="13">
+			<Name>enableCurrentCompressedBitrateEncoder</Name>
+			<On id="3">parameter</On>
+			<Type id="13">copy</Type>
+		</Action>
+		<Action id="14">
+			<Name>enableAutoChromaWeight</Name>
+			<On id="54">parameter</On>
+			<Type id="13">copy</Type>
+		</Action>
+		<Action id="15">
+			<Name>enableChromaWeight</Name>
+			<On id="5">parameter</On>
+			<Type id="13">copy</Type>
+		</Action>
+		<Action id="16">
+			<Name>enableCurrentCompressedBitrateDecoder</Name>
+			<On id="7">parameter</On>
+			<Type id="13">copy</Type>
+		</Action>
+		<Action id="17">
+			<Name>enableProgressionOrder</Name>
+			<On id="58">parameter</On>
+			<Type id="13">copy</Type>
+		</Action>
+		<Action id="18">
+			<Name>enableCodeBlockWidth</Name>
+			<On id="9">parameter</On>
+			<Type id="13">copy</Type>
+		</Action>
+		<Action id="19">
+			<Name>enableCodeBlockHeight</Name>
+			<On id="10">parameter</On>
+			<Type id="13">copy</Type>
+		</Action>
+		<Action id="20">
+			<Name>enableLosslessMode</Name>
+			<On id="56">parameter</On>
+			<Type id="13">copy</Type>
 		</Action>
 	</Actions>
 
@@ -149,10 +888,10 @@ Any inquiries can be addressed to:
 							<MajorVersion id="0">
 								<MinorVersions>
 									<MinorVersion id="1">
-										<Date>2024-01-08</Date>
+										<Date>2025-mm-dd</Date>
 										<Provider>
-											<Author>XXX</Author>
-											<Company>Skyline Communications</Company>
+											<Author>AuthorInitials</Author>
+											<Company>VersionProvider</Company>
 										</Provider>
 										<Changes>
 											<NewFeature>Initial version</NewFeature>

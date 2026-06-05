@@ -8,12 +8,107 @@ namespace Skyline.DataMiner.Scripting
 {
 public static class Parameter
 {
+	/// <summary>PID: 1 | Type: read</summary>
+	[EditorBrowsable(EditorBrowsableState.Never)]
+	public const int encoderstatus_1 = 1;
+	/// <summary>PID: 1 | Type: read</summary>
+	public const int encoderstatus = 1;
+	/// <summary>PID: 2 | Type: read</summary>
+	[EditorBrowsable(EditorBrowsableState.Never)]
+	public const int decoderstatus_2 = 2;
+	/// <summary>PID: 2 | Type: read</summary>
+	public const int decoderstatus = 2;
+	/// <summary>PID: 3 | Type: read</summary>
+	[EditorBrowsable(EditorBrowsableState.Never)]
+	public const int encodercurrentcompressedbitrate_3 = 3;
+	/// <summary>PID: 3 | Type: read</summary>
+	public const int encodercurrentcompressedbitrate = 3;
+	/// <summary>PID: 4 | Type: read</summary>
+	[EditorBrowsable(EditorBrowsableState.Never)]
+	public const int autochromaweight_4 = 4;
+	/// <summary>PID: 4 | Type: read</summary>
+	public const int autochromaweight = 4;
+	/// <summary>PID: 5 | Type: read</summary>
+	[EditorBrowsable(EditorBrowsableState.Never)]
+	public const int chromaweight_5 = 5;
+	/// <summary>PID: 5 | Type: read</summary>
+	public const int chromaweight = 5;
+	/// <summary>PID: 6 | Type: read</summary>
+	[EditorBrowsable(EditorBrowsableState.Never)]
+	public const int losslessmode_6 = 6;
+	/// <summary>PID: 6 | Type: read</summary>
+	public const int losslessmode = 6;
+	/// <summary>PID: 7 | Type: read</summary>
+	[EditorBrowsable(EditorBrowsableState.Never)]
+	public const int decodercurrentcompressedbitrate_7 = 7;
+	/// <summary>PID: 7 | Type: read</summary>
+	public const int decodercurrentcompressedbitrate = 7;
+	/// <summary>PID: 8 | Type: read</summary>
+	[EditorBrowsable(EditorBrowsableState.Never)]
+	public const int progressionorder_8 = 8;
+	/// <summary>PID: 8 | Type: read</summary>
+	public const int progressionorder = 8;
+	/// <summary>PID: 9 | Type: read</summary>
+	[EditorBrowsable(EditorBrowsableState.Never)]
+	public const int codeblockwidth_9 = 9;
+	/// <summary>PID: 9 | Type: read</summary>
+	public const int codeblockwidth = 9;
+	/// <summary>PID: 10 | Type: read</summary>
+	[EditorBrowsable(EditorBrowsableState.Never)]
+	public const int codeblockheight_10 = 10;
+	/// <summary>PID: 10 | Type: read</summary>
+	public const int codeblockheight = 10;
+	/// <summary>PID: 11 | Type: read</summary>
+	[EditorBrowsable(EditorBrowsableState.Never)]
+	public const int fixedzerovalue_11 = 11;
+	/// <summary>PID: 11 | Type: read</summary>
+	public const int fixedzerovalue = 11;
+	/// <summary>PID: 12 | Type: read</summary>
+	[EditorBrowsable(EditorBrowsableState.Never)]
+	public const int placeholdernotavailablevalue_12 = 12;
+	/// <summary>PID: 12 | Type: read</summary>
+	public const int placeholdernotavailablevalue = 12;
 	public class Write
 	{
+		/// <summary>PID: 51 | Type: write</summary>
+		[EditorBrowsable(EditorBrowsableState.Never)]
+		public const int encoderstatus_51 = 51;
+		/// <summary>PID: 51 | Type: write</summary>
+		public const int encoderstatus = 51;
+		/// <summary>PID: 52 | Type: write</summary>
+		[EditorBrowsable(EditorBrowsableState.Never)]
+		public const int decoderstatus_52 = 52;
+		/// <summary>PID: 52 | Type: write</summary>
+		public const int decoderstatus = 52;
+		/// <summary>PID: 54 | Type: write</summary>
+		[EditorBrowsable(EditorBrowsableState.Never)]
+		public const int autochromaweight_54 = 54;
+		/// <summary>PID: 54 | Type: write</summary>
+		public const int autochromaweight = 54;
+		/// <summary>PID: 56 | Type: write</summary>
+		[EditorBrowsable(EditorBrowsableState.Never)]
+		public const int losslessmode_56 = 56;
+		/// <summary>PID: 56 | Type: write</summary>
+		public const int losslessmode = 56;
+		/// <summary>PID: 58 | Type: write</summary>
+		[EditorBrowsable(EditorBrowsableState.Never)]
+		public const int progressionorder_58 = 58;
+		/// <summary>PID: 58 | Type: write</summary>
+		public const int progressionorder = 58;
 	}
 }
 public class WriteParameters
 {
+	/// <summary>PID: 51  | Type: write | DISCREETS: Enabled = 1, Disabled = 0</summary>
+	public System.Object Encoderstatus {get { return Protocol.GetParameter(51); }set { Protocol.SetParameter(51, value); }}
+	/// <summary>PID: 52  | Type: write | DISCREETS: Enabled = 1, Disabled = 0</summary>
+	public System.Object Decoderstatus {get { return Protocol.GetParameter(52); }set { Protocol.SetParameter(52, value); }}
+	/// <summary>PID: 54  | Type: write | DISCREETS: Enabled = 1, Disabled = 0</summary>
+	public System.Object Autochromaweight {get { return Protocol.GetParameter(54); }set { Protocol.SetParameter(54, value); }}
+	/// <summary>PID: 56  | Type: write | DISCREETS: Enabled = 1, Disabled = 0</summary>
+	public System.Object Losslessmode {get { return Protocol.GetParameter(56); }set { Protocol.SetParameter(56, value); }}
+	/// <summary>PID: 58  | Type: write | DISCREETS: LCRP = 0, RLCP = 1, RPCL = 2, PCRL = 3, CPRL = 4</summary>
+	public System.Object Progressionorder {get { return Protocol.GetParameter(58); }set { Protocol.SetParameter(58, value); }}
 	public SLProtocolExt Protocol;
 	public WriteParameters(SLProtocolExt protocol)
 	{
@@ -22,13 +117,117 @@ public class WriteParameters
 }
 public interface SLProtocolExt : SLProtocol
 {
-	object Afterstartup_dummy { get; set; }
+	object Encoderstatus_1 { get; set; }
+	object Encoderstatus { get; set; }
+	object Decoderstatus_2 { get; set; }
+	object Decoderstatus { get; set; }
+	object Encodercurrentcompressedbitrate_3 { get; set; }
+	object Encodercurrentcompressedbitrate { get; set; }
+	object Autochromaweight_4 { get; set; }
+	object Autochromaweight { get; set; }
+	object Chromaweight_5 { get; set; }
+	object Chromaweight { get; set; }
+	object Losslessmode_6 { get; set; }
+	object Losslessmode { get; set; }
+	object Decodercurrentcompressedbitrate_7 { get; set; }
+	object Decodercurrentcompressedbitrate { get; set; }
+	object Progressionorder_8 { get; set; }
+	object Progressionorder { get; set; }
+	object Codeblockwidth_9 { get; set; }
+	object Codeblockwidth { get; set; }
+	object Codeblockheight_10 { get; set; }
+	object Codeblockheight { get; set; }
+	object Fixedzerovalue_11 { get; set; }
+	object Fixedzerovalue { get; set; }
+	object Placeholdernotavailablevalue_12 { get; set; }
+	object Placeholdernotavailablevalue { get; set; }
+	object Fixedonevalue__fixed { get; set; }
+	object Encoderstatus_51 { get; set; }
+	object Decoderstatus_52 { get; set; }
+	object Autochromaweight_54 { get; set; }
+	object Losslessmode_56 { get; set; }
+	object Progressionorder_58 { get; set; }
 	WriteParameters Write { get; set; }
 }
 public class ConcreteSLProtocolExt : ConcreteSLProtocol, SLProtocolExt
 {
-	/// <summary>PID: 2  | Type: dummy</summary>
-	public System.Object Afterstartup_dummy {get { return GetParameter(2); }set { SetParameter(2, value); }}
+	/// <summary>PID: 1  | Type: read | DISCREETS: Enabled = 1, Disabled = 0</summary>
+	[EditorBrowsable(EditorBrowsableState.Never)]
+	public System.Object Encoderstatus_1 {get { return GetParameter(1); }set { SetParameter(1, value); }}
+	/// <summary>PID: 1  | Type: read | DISCREETS: Enabled = 1, Disabled = 0</summary>
+	public System.Object Encoderstatus {get { return GetParameter(1); }set { SetParameter(1, value); }}
+	/// <summary>PID: 2  | Type: read | DISCREETS: Enabled = 1, Disabled = 0</summary>
+	[EditorBrowsable(EditorBrowsableState.Never)]
+	public System.Object Decoderstatus_2 {get { return GetParameter(2); }set { SetParameter(2, value); }}
+	/// <summary>PID: 2  | Type: read | DISCREETS: Enabled = 1, Disabled = 0</summary>
+	public System.Object Decoderstatus {get { return GetParameter(2); }set { SetParameter(2, value); }}
+	/// <summary>PID: 3  | Type: read | EXCEPTIONS: Not Available = -1</summary>
+	[EditorBrowsable(EditorBrowsableState.Never)]
+	public System.Object Encodercurrentcompressedbitrate_3 {get { return GetParameter(3); }set { SetParameter(3, value); }}
+	/// <summary>PID: 3  | Type: read | EXCEPTIONS: Not Available = -1</summary>
+	public System.Object Encodercurrentcompressedbitrate {get { return GetParameter(3); }set { SetParameter(3, value); }}
+	/// <summary>PID: 4  | Type: read | DISCREETS: Enabled = 1, Disabled = 0 | EXCEPTIONS: Not Available = -1</summary>
+	[EditorBrowsable(EditorBrowsableState.Never)]
+	public System.Object Autochromaweight_4 {get { return GetParameter(4); }set { SetParameter(4, value); }}
+	/// <summary>PID: 4  | Type: read | DISCREETS: Enabled = 1, Disabled = 0 | EXCEPTIONS: Not Available = -1</summary>
+	public System.Object Autochromaweight {get { return GetParameter(4); }set { SetParameter(4, value); }}
+	/// <summary>PID: 5  | Type: read | EXCEPTIONS: Not Available = -1</summary>
+	[EditorBrowsable(EditorBrowsableState.Never)]
+	public System.Object Chromaweight_5 {get { return GetParameter(5); }set { SetParameter(5, value); }}
+	/// <summary>PID: 5  | Type: read | EXCEPTIONS: Not Available = -1</summary>
+	public System.Object Chromaweight {get { return GetParameter(5); }set { SetParameter(5, value); }}
+	/// <summary>PID: 6  | Type: read | DISCREETS: Enabled = 1, Disabled = 0 | EXCEPTIONS: Not Available = -1</summary>
+	[EditorBrowsable(EditorBrowsableState.Never)]
+	public System.Object Losslessmode_6 {get { return GetParameter(6); }set { SetParameter(6, value); }}
+	/// <summary>PID: 6  | Type: read | DISCREETS: Enabled = 1, Disabled = 0 | EXCEPTIONS: Not Available = -1</summary>
+	public System.Object Losslessmode {get { return GetParameter(6); }set { SetParameter(6, value); }}
+	/// <summary>PID: 7  | Type: read | EXCEPTIONS: Not Available = -1</summary>
+	[EditorBrowsable(EditorBrowsableState.Never)]
+	public System.Object Decodercurrentcompressedbitrate_7 {get { return GetParameter(7); }set { SetParameter(7, value); }}
+	/// <summary>PID: 7  | Type: read | EXCEPTIONS: Not Available = -1</summary>
+	public System.Object Decodercurrentcompressedbitrate {get { return GetParameter(7); }set { SetParameter(7, value); }}
+	/// <summary>PID: 8  | Type: read | DISCREETS: LCRP = 0, RLCP = 1, RPCL = 2, PCRL = 3, CPRL = 4 | EXCEPTIONS: Not Available = -1</summary>
+	[EditorBrowsable(EditorBrowsableState.Never)]
+	public System.Object Progressionorder_8 {get { return GetParameter(8); }set { SetParameter(8, value); }}
+	/// <summary>PID: 8  | Type: read | DISCREETS: LCRP = 0, RLCP = 1, RPCL = 2, PCRL = 3, CPRL = 4 | EXCEPTIONS: Not Available = -1</summary>
+	public System.Object Progressionorder {get { return GetParameter(8); }set { SetParameter(8, value); }}
+	/// <summary>PID: 9  | Type: read | EXCEPTIONS: Not Available = -1</summary>
+	[EditorBrowsable(EditorBrowsableState.Never)]
+	public System.Object Codeblockwidth_9 {get { return GetParameter(9); }set { SetParameter(9, value); }}
+	/// <summary>PID: 9  | Type: read | EXCEPTIONS: Not Available = -1</summary>
+	public System.Object Codeblockwidth {get { return GetParameter(9); }set { SetParameter(9, value); }}
+	/// <summary>PID: 10  | Type: read | EXCEPTIONS: Not Available = -1</summary>
+	[EditorBrowsable(EditorBrowsableState.Never)]
+	public System.Object Codeblockheight_10 {get { return GetParameter(10); }set { SetParameter(10, value); }}
+	/// <summary>PID: 10  | Type: read | EXCEPTIONS: Not Available = -1</summary>
+	public System.Object Codeblockheight {get { return GetParameter(10); }set { SetParameter(10, value); }}
+	/// <summary>PID: 11  | Type: read</summary>
+	[EditorBrowsable(EditorBrowsableState.Never)]
+	public System.Object Fixedzerovalue_11 {get { return GetParameter(11); }set { SetParameter(11, value); }}
+	/// <summary>PID: 11  | Type: read</summary>
+	public System.Object Fixedzerovalue {get { return GetParameter(11); }set { SetParameter(11, value); }}
+	/// <summary>PID: 12  | Type: read</summary>
+	[EditorBrowsable(EditorBrowsableState.Never)]
+	public System.Object Placeholdernotavailablevalue_12 {get { return GetParameter(12); }set { SetParameter(12, value); }}
+	/// <summary>PID: 12  | Type: read</summary>
+	public System.Object Placeholdernotavailablevalue {get { return GetParameter(12); }set { SetParameter(12, value); }}
+	/// <summary>PID: 13  | Type: fixed</summary>
+	public System.Object Fixedonevalue__fixed {get { return GetParameter(13); }set { SetParameter(13, value); }}
+	/// <summary>PID: 51  | Type: write | DISCREETS: Enabled = 1, Disabled = 0</summary>
+	[EditorBrowsable(EditorBrowsableState.Never)]
+	public System.Object Encoderstatus_51 {get { return GetParameter(51); }set { SetParameter(51, value); }}
+	/// <summary>PID: 52  | Type: write | DISCREETS: Enabled = 1, Disabled = 0</summary>
+	[EditorBrowsable(EditorBrowsableState.Never)]
+	public System.Object Decoderstatus_52 {get { return GetParameter(52); }set { SetParameter(52, value); }}
+	/// <summary>PID: 54  | Type: write | DISCREETS: Enabled = 1, Disabled = 0</summary>
+	[EditorBrowsable(EditorBrowsableState.Never)]
+	public System.Object Autochromaweight_54 {get { return GetParameter(54); }set { SetParameter(54, value); }}
+	/// <summary>PID: 56  | Type: write | DISCREETS: Enabled = 1, Disabled = 0</summary>
+	[EditorBrowsable(EditorBrowsableState.Never)]
+	public System.Object Losslessmode_56 {get { return GetParameter(56); }set { SetParameter(56, value); }}
+	/// <summary>PID: 58  | Type: write | DISCREETS: LCRP = 0, RLCP = 1, RPCL = 2, PCRL = 3, CPRL = 4</summary>
+	[EditorBrowsable(EditorBrowsableState.Never)]
+	public System.Object Progressionorder_58 {get { return GetParameter(58); }set { SetParameter(58, value); }}
 	public WriteParameters Write { get; set; }
 	public ConcreteSLProtocolExt()
 	{
