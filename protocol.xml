@@ -22,7 +22,7 @@
 	<SNMP includepages="true">auto</SNMP>
 	<ElementType>Example</ElementType>
 	<Type relativeTimers="true" options=";unicode">virtual</Type>
-	<Display defaultPage="General" pageOrder="General" wideColumnPages=""></Display>
+	<Display defaultPage="General" pageOrder="General;Encoder;Decoder" wideColumnPages=""></Display>
 
 	<Compliancies>
 		<CassandraReady>true</CassandraReady>
@@ -43,6 +43,9 @@
 				<LengthType>next param</LengthType>
 				<DefaultValue>0</DefaultValue>
 			</Interprete>
+			<Alarm>
+				<Monitored>true</Monitored>
+			</Alarm>
 			<Display>
 				<RTDisplay>true</RTDisplay>
 				<Positions>
@@ -100,8 +103,8 @@
 				</Discreets>
 			</Measurement>
 		</Param>
-
-
+		
+		
 		<Param id="2"  save="true">
 			<Name>decoderStatus</Name>
 			<Description>Decoder Status</Description>
@@ -115,6 +118,9 @@
 				<LengthType>next param</LengthType>
 				<DefaultValue>0</DefaultValue>
 			</Interprete>
+			<Alarm>
+				<Monitored>true</Monitored>
+			</Alarm>
 			<Display>
 				<RTDisplay>true</RTDisplay>
 				<Positions>
@@ -172,12 +178,13 @@
 				</Discreets>
 			</Measurement>
 		</Param>
-
+		
 		<Param id="3" trending="true">
 			<Name>encoderCurrentCompressedBitrate</Name>
 			<Description>Current Compressed Bitrate (Encoder)</Description>
 			<Type>read</Type>
 			<Information>
+				<Subtext>Current Compressed Bitrate for Encoder</Subtext>
 			</Information>
 			<Interprete>
 				<RawType>numeric text</RawType>
@@ -191,6 +198,9 @@
 					</Exception>
 				</Exceptions>
 			</Interprete>
+			<Alarm>
+				<Monitored>true</Monitored>
+			</Alarm>
 			<Display>
 				<RTDisplay>true</RTDisplay>
 				<Units>Mbps</Units>
@@ -200,32 +210,33 @@
 				</Range>
 				<Positions>
 					<Position>
-						<Page>General</Page>
+						<Page>Encoder</Page>
 						<Column>0</Column>
-						<Row>1</Row>
+						<Row>0</Row>
 					</Position>
 				</Positions>
-
+				
 			</Display>
-
+			
 			<Measurement>
 				<Type>number</Type>
 			</Measurement>
-
+			
 		</Param>
-
+		
 		<Param id="4" trending="true">
 			<Name>autoChromaWeight</Name>
 			<Description>Auto Chroma Weight</Description>
 			<Type>read</Type>
 			<Information>
+				<Subtext>Auto Chroma Weight for Encoder</Subtext>
 			</Information>
 			<Interprete>
 				<RawType>numeric text</RawType>
 				<Type>double</Type>
 				<LengthType>next param</LengthType>
 				<DefaultValue>0</DefaultValue>
-
+				
 				<Exceptions>
 					<Exception id="1" value="-1">
 						<Display state="disabled">Not Available</Display>
@@ -233,13 +244,16 @@
 					</Exception>
 				</Exceptions>
 			</Interprete>
+			<Alarm>
+				<Monitored>true</Monitored>
+			</Alarm>
 			<Display>
 				<RTDisplay>true</RTDisplay>
 				<Positions>
 					<Position>
-						<Page>General</Page>
+						<Page>Encoder</Page>
 						<Column>0</Column>
-						<Row>2</Row>
+						<Row>1</Row>
 					</Position>
 				</Positions>
 			</Display>
@@ -257,7 +271,7 @@
 				</Discreets>
 			</Measurement>
 		</Param>
-		<Param id="54" setter="true">
+		<Param id="54">
 			<Name>autoChromaWeight</Name>
 			<Description>Auto Chroma Weight</Description>
 			<Type>write</Type>
@@ -270,9 +284,9 @@
 				<RTDisplay>true</RTDisplay>
 				<Positions>
 					<Position>
-						<Page>General</Page>
+						<Page>Encoder</Page>
 						<Column>0</Column>
-						<Row>2</Row>
+						<Row>1</Row>
 					</Position>
 				</Positions>
 			</Display>
@@ -290,12 +304,13 @@
 				</Discreets>
 			</Measurement>
 		</Param>
-
+		
 		<Param id="5" trending="true">
 			<Name>chromaWeight</Name>
 			<Description>Chroma Weight</Description>
 			<Type>read</Type>
 			<Information>
+				<Subtext>Chroma Weight for Encoder</Subtext>
 			</Information>
 			<Interprete>
 				<RawType>numeric text</RawType>
@@ -308,6 +323,9 @@
 					</Exception>
 				</Exceptions>
 			</Interprete>
+			<Alarm>
+				<Monitored>true</Monitored>
+			</Alarm>
 			<Display>
 				<RTDisplay>true</RTDisplay>
 				<Units>%</Units>
@@ -317,9 +335,9 @@
 				</Range>
 				<Positions>
 					<Position>
-						<Page>General</Page>
+						<Page>Encoder</Page>
 						<Column>0</Column>
-						<Row>3</Row>
+						<Row>2</Row>
 					</Position>
 				</Positions>
 			</Display>
@@ -327,12 +345,13 @@
 				<Type>analog</Type>
 			</Measurement>
 		</Param>
-
+		
 		<Param id="6" trending="true">
 			<Name>losslessMode</Name>
 			<Description>Lossless Mode</Description>
 			<Type>read</Type>
 			<Information>
+				<Subtext>Lossless Mode for Encoder</Subtext>
 			</Information>
 			<Interprete>
 				<RawType>numeric text</RawType>
@@ -346,13 +365,16 @@
 					</Exception>
 				</Exceptions>
 			</Interprete>
+			<Alarm>
+				<Monitored>true</Monitored>
+			</Alarm>
 			<Display>
 				<RTDisplay>true</RTDisplay>
 				<Positions>
 					<Position>
-						<Page>General</Page>
+						<Page>Encoder</Page>
 						<Column>0</Column>
-						<Row>4</Row>
+						<Row>3</Row>
 					</Position>
 				</Positions>
 			</Display>
@@ -370,7 +392,7 @@
 				</Discreets>
 			</Measurement>
 		</Param>
-		<Param id="56" setter="true">
+		<Param id="56">
 			<Name>losslessMode</Name>
 			<Description>Lossless Mode</Description>
 			<Type>write</Type>
@@ -383,9 +405,9 @@
 				<RTDisplay>true</RTDisplay>
 				<Positions>
 					<Position>
-						<Page>General</Page>
+						<Page>Encoder</Page>
 						<Column>0</Column>
-						<Row>4</Row>
+						<Row>3</Row>
 					</Position>
 				</Positions>
 			</Display>
@@ -403,12 +425,13 @@
 				</Discreets>
 			</Measurement>
 		</Param>
-
+		
 		<Param id="7" trending="true">
 			<Name>decoderCurrentCompressedBitrate</Name>
 			<Description>Current Compressed Bitrate (Decoder)</Description>
 			<Type>read</Type>
 			<Information>
+				<Subtext>Current Compressed Bitrate for Decoder</Subtext>
 			</Information>
 			<Interprete>
 				<RawType>numeric text</RawType>
@@ -422,6 +445,9 @@
 					</Exception>
 				</Exceptions>
 			</Interprete>
+			<Alarm>
+				<Monitored>true</Monitored>
+			</Alarm>
 			<Display>
 				<RTDisplay>true</RTDisplay>
 				<Units>Mbps</Units>
@@ -431,9 +457,9 @@
 				</Range>
 				<Positions>
 					<Position>
-						<Page>General</Page>
-						<Column>1</Column>
-						<Row>1</Row>
+						<Page>Decoder</Page>
+						<Column>0</Column>
+						<Row>0</Row>
 					</Position>
 				</Positions>
 			</Display>
@@ -441,12 +467,13 @@
 				<Type>number</Type>
 			</Measurement>
 		</Param>
-
+		
 		<Param id="8" trending="true">
 			<Name>progressionOrder</Name>
 			<Description>Progression Order</Description>
 			<Type>read</Type>
 			<Information>
+				<Subtext>Progression Order for Decoder</Subtext>
 			</Information>
 			<Interprete>
 				<RawType>numeric text</RawType>
@@ -459,13 +486,16 @@
 					</Exception>
 				</Exceptions>
 			</Interprete>
+			<Alarm>
+				<Monitored>true</Monitored>
+			</Alarm>
 			<Display>
 				<RTDisplay>true</RTDisplay>
 				<Positions>
 					<Position>
-						<Page>General</Page>
-						<Column>1</Column>
-						<Row>2</Row>
+						<Page>Decoder</Page>
+						<Column>0</Column>
+						<Row>1</Row>
 					</Position>
 				</Positions>
 			</Display>
@@ -495,7 +525,7 @@
 				</Discreets>
 			</Measurement>
 		</Param>
-		<Param id="58" setter="true" >
+		<Param id="58">
 			<Name>progressionOrder</Name>
 			<Description>Progression Order</Description>
 			<Type>write</Type>
@@ -508,9 +538,9 @@
 				<RTDisplay>true</RTDisplay>
 				<Positions>
 					<Position>
-						<Page>General</Page>
-						<Column>1</Column>
-						<Row>2</Row>
+						<Page>Decoder</Page>
+						<Column>0</Column>
+						<Row>1</Row>
 					</Position>
 				</Positions>
 			</Display>
@@ -540,12 +570,13 @@
 				</Discreets>
 			</Measurement>
 		</Param>
-
+		
 		<Param id="9" trending="true">
 			<Name>codeBlockWidth</Name>
 			<Description>Code Block Width</Description>
 			<Type>read</Type>
 			<Information>
+				<Subtext>Code Block Width for Encoder</Subtext>
 			</Information>
 			<Interprete>
 				<RawType>numeric text</RawType>
@@ -559,14 +590,17 @@
 					</Exception>
 				</Exceptions>
 			</Interprete>
+			<Alarm>
+				<Monitored>true</Monitored>
+			</Alarm>
 			<Display>
 				<RTDisplay>true</RTDisplay>
 				<Units>px</Units>
 				<Positions>
 					<Position>
-						<Page>General</Page>
-						<Column>1</Column>
-						<Row>3</Row>
+						<Page>Decoder</Page>
+						<Column>0</Column>
+						<Row>2</Row>
 					</Position>
 				</Positions>
 			</Display>
@@ -579,6 +613,7 @@
 			<Description>Code Block Height</Description>
 			<Type>read</Type>
 			<Information>
+				<Subtext>Code Block Height for Decoder</Subtext>
 			</Information>
 			<Interprete>
 				<RawType>numeric text</RawType>
@@ -592,14 +627,17 @@
 					</Exception>
 				</Exceptions>
 			</Interprete>
+			<Alarm>
+				<Monitored>true</Monitored>
+			</Alarm>
 			<Display>
 				<RTDisplay>true</RTDisplay>
 				<Units>px</Units>
 				<Positions>
 					<Position>
-						<Page>General</Page>
-						<Column>1</Column>
-						<Row>4</Row>
+						<Page>Decoder</Page>
+						<Column>0</Column>
+						<Row>3</Row>
 					</Position>
 				</Positions>
 			</Display>
@@ -642,12 +680,78 @@
 				<Value>0x01</Value>
 			</Interprete>
 		</Param>
+		<Param id="14">
+			<Name>chromaWeightDefaultValue</Name>
+			<Description>Chroma Weight Default Value</Description>
+			<Type>fixed</Type>
+			<Interprete>
+				<RawType>unsigned number</RawType>
+				<Type>double</Type>
+				<LengthType>fixed</LengthType>
+				<Length>1</Length>
+				<Value>0x0C</Value>
+			</Interprete>
+		</Param>
+		<Param id="15" trending="false">
+			<Name>totalEncoderTx</Name>
+			<Description>Total Transmitted Bytes Encoder</Description>
+			<Type>read</Type>
+			<Information>
+				<Subtext></Subtext>
+			</Information>
+			<Interprete>
+				<RawType>numeric text</RawType>
+				<Type>double</Type>
+				<LengthType>next param</LengthType>
+			</Interprete>
+			<Display>
+				<RTDisplay>true</RTDisplay>
+			</Display>
+			<Measurement>
+				<Type>number</Type>
+			</Measurement>
+		</Param>
+		<Param id="16" trending="false">
+			<Name>totalDecoderTx</Name>
+			<Description>Total Transmitted Bytes Decoder</Description>
+			<Type>read</Type>
+			<Information>
+				<Subtext></Subtext>
+			</Information>
+			<Interprete>
+				<RawType>numeric text</RawType>
+				<Type>double</Type>
+				<LengthType>next param</LengthType>
+			</Interprete>
+			<Display>
+				<RTDisplay>true</RTDisplay>
+			</Display>
+			<Measurement>
+				<Type>number</Type>
+			</Measurement>
+		</Param>
 	</Params>
 
 	<QActions>
 	</QActions>
 
 	<Groups>
+		<Group id="1">
+			<Name>incrementEncoderTx</Name>
+			<Description>Increment Encoder Bitrate</Description>
+			<Type>action</Type>
+			<Content>
+				<Action>22</Action>
+			</Content>
+		</Group>
+		<Group id="2">
+			<Name>incrementDecoderTx</Name>
+			<Description>Increment Decoder Bitrate</Description>
+			<Type>action</Type>
+			<Content>
+				<Action>23</Action>
+			</Content>
+		</Group>
 	</Groups>
 
 	<Triggers>
@@ -719,7 +823,6 @@
 				<Id>14</Id>
 				<Id>15</Id>
 				<Id>20</Id>
-
 			</Content>
 		</Trigger>
 		<Trigger id="7">
@@ -744,6 +847,36 @@
 				<Id>6</Id>
 				<Id else="true">4</Id>
 				<Id else="true">7</Id>
+			</Content>
+		</Trigger>
+		<Trigger id="9">
+			<Name>onChangeAutoChromaWeight</Name>
+			<On id="54">parameter</On>
+			<Time>change</Time>
+			<Type>action</Type>
+			<Condition>id:51 == 1</Condition>
+			<Content>
+				<Id>14</Id>
+			</Content>
+		</Trigger>
+		<Trigger id="10">
+			<Name>onChangeLosslessMode</Name>
+			<On id="56">parameter</On>
+			<Time>change</Time>
+			<Type>action</Type>
+			<Condition>id:51 == 1</Condition>
+			<Content>
+				<Id>20</Id>
+			</Content>
+		</Trigger>
+		<Trigger id="11">
+			<Name>onChangeProgressionOrder</Name>
+			<On id="58">parameter</On>
+			<Time>change</Time>
+			<Type>action</Type>
+			<Condition>id:52 == 1</Condition>
+			<Content>
+				<Id>17</Id>
 			</Content>
 		</Trigger>
 	</Triggers>
@@ -776,7 +909,7 @@
 		</Action>
 		<Action id="6">
 			<Name>disableAutoChromaWeight</Name>
-			<On id="54">parameter</On>
+			<On id="4">parameter</On>
 			<Type id="12">copy</Type>
 		</Action>
 		<Action id="7">
@@ -786,7 +919,7 @@
 		</Action>
 		<Action id="8">
 			<Name>disableLosslessMode</Name>
-			<On id="56">parameter</On>
+			<On id="6">parameter</On>
 			<Type id="12">copy</Type>
 		</Action>
 		<Action id="9">
@@ -816,13 +949,13 @@
 		</Action>
 		<Action id="14">
 			<Name>enableAutoChromaWeight</Name>
-			<On id="54">parameter</On>
-			<Type id="13">copy</Type>
+			<On id="4">parameter</On>
+			<Type id="54">copy</Type>
 		</Action>
 		<Action id="15">
 			<Name>enableChromaWeight</Name>
 			<On id="5">parameter</On>
-			<Type id="13">copy</Type>
+			<Type id="14">copy</Type>
 		</Action>
 		<Action id="16">
 			<Name>enableCurrentCompressedBitrateDecoder</Name>
@@ -831,8 +964,8 @@
 		</Action>
 		<Action id="17">
 			<Name>enableProgressionOrder</Name>
-			<On id="58">parameter</On>
-			<Type id="13">copy</Type>
+			<On id="8">parameter</On>
+			<Type id="58">copy</Type>
 		</Action>
 		<Action id="18">
 			<Name>enableCodeBlockWidth</Name>
@@ -846,8 +979,23 @@
 		</Action>
 		<Action id="20">
 			<Name>enableLosslessMode</Name>
-			<On id="56">parameter</On>
-			<Type id="13">copy</Type>
+			<On id="6">parameter</On>
+			<Type id="56">copy</Type>
+		</Action>
+		<Action id="21">
+			<Name>setChromaWeightDefaultValue</Name>
+			<On id="5">parameter</On>
+			<Type id="14">copy</Type>
+		</Action>
+		<Action id="22">
+			<Name>incrementEncoderTx</Name>
+			<On id="15">parameter</On>
+			<Type>increment</Type>
+		</Action>
+		<Action id="23">
+			<Name>incrementDecoderTx</Name>
+			<On id="16">parameter</On>
+			<Type>increment</Type>
 		</Action>
 	</Actions>
 
@@ -857,22 +1005,11 @@
 			<Time initial="true">10000</Time>
 			<Interval>75</Interval>
 			<Content>
+				<Group>1</Group>
+				<Group>2</Group>
 			</Content>
 		</Timer>
-		<Timer id="2">
-			<Name>Medium Timer (1m)</Name>
-			<Time initial="true" dataDisplay="30000">60000</Time>
-			<Interval>75</Interval>
-			<Content>
-			</Content>
-		</Timer>
-		<Timer id="3">
-			<Name>Slow Timer (1h)</Name>
-			<Time initial="true">3600000</Time>
-			<Interval>75</Interval>
-			<Content>
-			</Content>
-		</Timer>
+		
 	</Timers>
 
 	<PortSettings>

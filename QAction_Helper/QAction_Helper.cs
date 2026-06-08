@@ -142,6 +142,7 @@ public interface SLProtocolExt : SLProtocol
 	object Placeholdernotavailablevalue_12 { get; set; }
 	object Placeholdernotavailablevalue { get; set; }
 	object Fixedonevalue__fixed { get; set; }
+	object Chromaweightdefaultvalue__fixed { get; set; }
 	object Encoderstatus_51 { get; set; }
 	object Decoderstatus_52 { get; set; }
 	object Autochromaweight_54 { get; set; }
@@ -213,6 +214,8 @@ public class ConcreteSLProtocolExt : ConcreteSLProtocol, SLProtocolExt
 	public System.Object Placeholdernotavailablevalue {get { return GetParameter(12); }set { SetParameter(12, value); }}
 	/// <summary>PID: 13  | Type: fixed</summary>
 	public System.Object Fixedonevalue__fixed {get { return GetParameter(13); }set { SetParameter(13, value); }}
+	/// <summary>PID: 14  | Type: fixed</summary>
+	public System.Object Chromaweightdefaultvalue__fixed {get { return GetParameter(14); }set { SetParameter(14, value); }}
 	/// <summary>PID: 51  | Type: write | DISCREETS: Enabled = 1, Disabled = 0</summary>
 	[EditorBrowsable(EditorBrowsableState.Never)]
 	public System.Object Encoderstatus_51 {get { return GetParameter(51); }set { SetParameter(51, value); }}
