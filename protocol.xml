@@ -22,7 +22,18 @@
 	<SNMP includepages="true">auto</SNMP>
 	<ElementType>Example</ElementType>
 	<Type relativeTimers="true" options=";unicode">virtual</Type>
-	<Display defaultPage="General" pageOrder="General;Encoder;Decoder" wideColumnPages=""></Display>
+	<Display defaultPage="General" pageOrder="General;Encoder;Decoder" wideColumnPages="General">
+		<Pages>
+			<Page>
+				<Name>Encoder</Name>
+				<Visibility default="true" overridePID="1" value="0"></Visibility>
+			</Page>
+			<Page>
+				<Name>Decoder</Name>
+				<Visibility default="false" overridePID="1" value="0"></Visibility>
+			</Page>
+		</Pages>
+	</Display>
 
 	<Compliancies>
 		<CassandraReady>true</CassandraReady>
@@ -31,21 +42,23 @@
 
 	<Params>
 		<Param id="1" save="true">
-			<Name>encoderStatus</Name>
-			<Description>Encoder Status</Description>
+			<Name>deviceMode</Name>
+			<Description>Device Mode</Description>
 			<Type>read</Type>
 			<Information>
-				<Subtext>Encoder description</Subtext>
+				<Subtext>Device mode setter</Subtext>
 			</Information>
 			<Interprete>
 				<RawType>numeric text</RawType>
 				<Type>double</Type>
 				<LengthType>next param</LengthType>
-				<DefaultValue>0</DefaultValue>
+				<DefaultValue>1</DefaultValue>
 			</Interprete>
+			<!-- SuppressValidator 2.5.1 The both values are value and no need for alarm thresholds -->
 			<Alarm>
 				<Monitored>true</Monitored>
 			</Alarm>
+			<!-- /SuppressValidator 2.5.1 -->
 			<Display>
 				<RTDisplay>true</RTDisplay>
 				<Positions>
@@ -60,19 +73,19 @@
 				<Type>discreet</Type>
 				<Discreets>
 					<Discreet>
-						<Display>Enabled</Display>
+						<Display>Encoder</Display>
 						<Value>1</Value>
 					</Discreet>
 					<Discreet>
-						<Display>Disabled</Display>
+						<Display>Decoder</Display>
 						<Value>0</Value>
 					</Discreet>
 				</Discreets>
 			</Measurement>
 		</Param>
 		<Param id="51" setter="true">
-			<Name>encoderStatus</Name>
-			<Description>Encoder Status</Description>
+			<Name>deviceMode</Name>
+			<Description>Device Mode</Description>
 			<Type>write</Type>
 			<Interprete>
 				<RawType>numeric text</RawType>
@@ -93,92 +106,17 @@
 				<Type>togglebutton</Type>
 				<Discreets>
 					<Discreet>
-						<Display>Enabled</Display>
+						<Display>Encoder</Display>
 						<Value>1</Value>
 					</Discreet>
 					<Discreet>
-						<Display>Disabled</Display>
+						<Display>Decoder</Display>
 						<Value>0</Value>
 					</Discreet>
 				</Discreets>
 			</Measurement>
 		</Param>
-		
-		
-		<Param id="2"  save="true">
-			<Name>decoderStatus</Name>
-			<Description>Decoder Status</Description>
-			<Type>read</Type>
-			<Information>
-				<Subtext>Decoder description</Subtext>
-			</Information>
-			<Interprete>
-				<RawType>numeric text</RawType>
-				<Type>double</Type>
-				<LengthType>next param</LengthType>
-				<DefaultValue>0</DefaultValue>
-			</Interprete>
-			<Alarm>
-				<Monitored>true</Monitored>
-			</Alarm>
-			<Display>
-				<RTDisplay>true</RTDisplay>
-				<Positions>
-					<Position>
-						<Page>General</Page>
-						<Column>1</Column>
-						<Row>0</Row>
-					</Position>
-				</Positions>
-			</Display>
-			<Measurement>
-				<Type>discreet</Type>
-				<Discreets>
-					<Discreet>
-						<Display>Enabled</Display>
-						<Value>1</Value>
-					</Discreet>
-					<Discreet>
-						<Display>Disabled</Display>
-						<Value>0</Value>
-					</Discreet>
-				</Discreets>
-			</Measurement>
-		</Param>
-		<Param id="52" setter="true">
-			<Name>decoderStatus</Name>
-			<Description>Decoder Status</Description>
-			<Type>write</Type>
-			<Interprete>
-				<RawType>numeric text</RawType>
-				<Type>double</Type>
-				<LengthType>next param</LengthType>
-			</Interprete>
-			<Display>
-				<RTDisplay>true</RTDisplay>
-				<Positions>
-					<Position>
-						<Page>General</Page>
-						<Column>1</Column>
-						<Row>0</Row>
-					</Position>
-				</Positions>
-			</Display>
-			<Measurement>
-				<Type>togglebutton</Type>
-				<Discreets>
-					<Discreet>
-						<Display>Enabled</Display>
-						<Value>1</Value>
-					</Discreet>
-					<Discreet>
-						<Display>Disabled</Display>
-						<Value>0</Value>
-					</Discreet>
-				</Discreets>
-			</Measurement>
-		</Param>
-		
+
 		<Param id="3" trending="true">
 			<Name>encoderCurrentCompressedBitrate</Name>
 			<Description>Current Compressed Bitrate (Encoder)</Description>
@@ -190,7 +128,8 @@
 				<RawType>numeric text</RawType>
 				<Type>double</Type>
 				<LengthType>next param</LengthType>
-				<DefaultValue>0</DefaultValue>
+				<DefaultValue>2500.677898</DefaultValue>
+				<Decimals>6</Decimals>
 				<Exceptions>
 					<Exception id="1" value="-1">
 						<Display state="disabled">Not Available</Display>
@@ -200,10 +139,18 @@
 			</Interprete>
 			<Alarm>
 				<Monitored>true</Monitored>
+				<CL>0</CL>
+				<MaL>5</MaL>
 			</Alarm>
 			<Display>
 				<RTDisplay>true</RTDisplay>
-				<Units>Mbps</Units>
+				<Units>kbps</Units>
+				<DynamicUnits>
+					<Unit decimals="1">bps</Unit>
+					<Unit decimals="6">Mbps</Unit>
+					<Unit>Gbps</Unit>
+				</DynamicUnits>
+				<Decimals>3</Decimals>
 				<Range>
 					<Low>0</Low>
 					<High>10000</High>
@@ -212,18 +159,18 @@
 					<Position>
 						<Page>Encoder</Page>
 						<Column>0</Column>
-						<Row>0</Row>
+						<Row>1</Row>
 					</Position>
 				</Positions>
-				
+
 			</Display>
-			
+
 			<Measurement>
 				<Type>number</Type>
 			</Measurement>
-			
+
 		</Param>
-		
+
 		<Param id="4" trending="true">
 			<Name>autoChromaWeight</Name>
 			<Description>Auto Chroma Weight</Description>
@@ -236,16 +183,22 @@
 				<Type>double</Type>
 				<LengthType>next param</LengthType>
 				<DefaultValue>0</DefaultValue>
-				
 				<Exceptions>
 					<Exception id="1" value="-1">
 						<Display state="disabled">Not Available</Display>
 						<Value>-1</Value>
 					</Exception>
+					<Exception id="2" value="-2">
+						<Display state="disabled">Not Reachable</Display>
+						<Value>-2</Value>
+					</Exception>
 				</Exceptions>
 			</Interprete>
 			<Alarm>
 				<Monitored>true</Monitored>
+				<Normal>1</Normal>
+				<WaH>0</WaH>
+				<CH>$-2</CH>
 			</Alarm>
 			<Display>
 				<RTDisplay>true</RTDisplay>
@@ -253,7 +206,7 @@
 					<Position>
 						<Page>Encoder</Page>
 						<Column>0</Column>
-						<Row>1</Row>
+						<Row>2</Row>
 					</Position>
 				</Positions>
 			</Display>
@@ -286,7 +239,7 @@
 					<Position>
 						<Page>Encoder</Page>
 						<Column>0</Column>
-						<Row>1</Row>
+						<Row>2</Row>
 					</Position>
 				</Positions>
 			</Display>
@@ -304,7 +257,7 @@
 				</Discreets>
 			</Measurement>
 		</Param>
-		
+
 		<Param id="5" trending="true">
 			<Name>chromaWeight</Name>
 			<Description>Chroma Weight</Description>
@@ -337,7 +290,7 @@
 					<Position>
 						<Page>Encoder</Page>
 						<Column>0</Column>
-						<Row>2</Row>
+						<Row>3</Row>
 					</Position>
 				</Positions>
 			</Display>
@@ -345,7 +298,7 @@
 				<Type>analog</Type>
 			</Measurement>
 		</Param>
-		
+
 		<Param id="6" trending="true">
 			<Name>losslessMode</Name>
 			<Description>Lossless Mode</Description>
@@ -374,7 +327,7 @@
 					<Position>
 						<Page>Encoder</Page>
 						<Column>0</Column>
-						<Row>3</Row>
+						<Row>4</Row>
 					</Position>
 				</Positions>
 			</Display>
@@ -382,12 +335,12 @@
 				<Type>discreet</Type>
 				<Discreets>
 					<Discreet>
-						<Display>Enabled</Display>
-						<Value>1</Value>
-					</Discreet>
-					<Discreet>
 						<Display>Disabled</Display>
 						<Value>0</Value>
+					</Discreet>
+					<Discreet>
+						<Display>Enabled</Display>
+						<Value>1</Value>
 					</Discreet>
 				</Discreets>
 			</Measurement>
@@ -407,7 +360,7 @@
 					<Position>
 						<Page>Encoder</Page>
 						<Column>0</Column>
-						<Row>3</Row>
+						<Row>4</Row>
 					</Position>
 				</Positions>
 			</Display>
@@ -425,7 +378,7 @@
 				</Discreets>
 			</Measurement>
 		</Param>
-		
+
 		<Param id="7" trending="true">
 			<Name>decoderCurrentCompressedBitrate</Name>
 			<Description>Current Compressed Bitrate (Decoder)</Description>
@@ -459,7 +412,7 @@
 					<Position>
 						<Page>Decoder</Page>
 						<Column>0</Column>
-						<Row>0</Row>
+						<Row>1</Row>
 					</Position>
 				</Positions>
 			</Display>
@@ -467,7 +420,7 @@
 				<Type>number</Type>
 			</Measurement>
 		</Param>
-		
+
 		<Param id="8" trending="true">
 			<Name>progressionOrder</Name>
 			<Description>Progression Order</Description>
@@ -495,7 +448,7 @@
 					<Position>
 						<Page>Decoder</Page>
 						<Column>0</Column>
-						<Row>1</Row>
+						<Row>2</Row>
 					</Position>
 				</Positions>
 			</Display>
@@ -540,7 +493,7 @@
 					<Position>
 						<Page>Decoder</Page>
 						<Column>0</Column>
-						<Row>1</Row>
+						<Row>2</Row>
 					</Position>
 				</Positions>
 			</Display>
@@ -570,7 +523,7 @@
 				</Discreets>
 			</Measurement>
 		</Param>
-		
+
 		<Param id="9" trending="true">
 			<Name>codeBlockWidth</Name>
 			<Description>Code Block Width</Description>
@@ -596,11 +549,14 @@
 			<Display>
 				<RTDisplay>true</RTDisplay>
 				<Units>px</Units>
+				<Range>
+					<Low>0</Low>
+				</Range>
 				<Positions>
 					<Position>
 						<Page>Decoder</Page>
 						<Column>0</Column>
-						<Row>2</Row>
+						<Row>3</Row>
 					</Position>
 				</Positions>
 			</Display>
@@ -633,11 +589,14 @@
 			<Display>
 				<RTDisplay>true</RTDisplay>
 				<Units>px</Units>
+				<Range>
+					<Low>0</Low>
+				</Range>
 				<Positions>
 					<Position>
 						<Page>Decoder</Page>
 						<Column>0</Column>
-						<Row>3</Row>
+						<Row>4</Row>
 					</Position>
 				</Positions>
 			</Display>
@@ -697,15 +656,35 @@
 			<Description>Total Transmitted Bytes Encoder</Description>
 			<Type>read</Type>
 			<Information>
-				<Subtext></Subtext>
+				<Subtext>Total Transmitted Bytes Encoder</Subtext>
 			</Information>
 			<Interprete>
 				<RawType>numeric text</RawType>
 				<Type>double</Type>
 				<LengthType>next param</LengthType>
 			</Interprete>
+			<Alarm>
+				<Monitored>true</Monitored>
+			</Alarm>
 			<Display>
 				<RTDisplay>true</RTDisplay>
+				<Units>B</Units>
+				<DynamicUnits>
+					<Unit decimals="0">B</Unit>
+					<Unit decimals="3">kB</Unit>
+					<Unit decimals="6">MB</Unit>
+					<Unit decimals="9">GB</Unit>
+				</DynamicUnits>
+				<Range>
+					<Low>0</Low>
+				</Range>
+				<Positions>
+					<Position>
+						<Page>Encoder</Page>
+						<Column>0</Column>
+						<Row>0</Row>
+					</Position>
+				</Positions>
 			</Display>
 			<Measurement>
 				<Type>number</Type>
@@ -716,15 +695,35 @@
 			<Description>Total Transmitted Bytes Decoder</Description>
 			<Type>read</Type>
 			<Information>
-				<Subtext></Subtext>
+				<Subtext>Total Transmitted Bytes Decoder</Subtext>
 			</Information>
 			<Interprete>
 				<RawType>numeric text</RawType>
 				<Type>double</Type>
 				<LengthType>next param</LengthType>
 			</Interprete>
+			<Alarm>
+				<Monitored>true</Monitored>
+			</Alarm>
 			<Display>
 				<RTDisplay>true</RTDisplay>
+				<Units>B</Units>
+				<DynamicUnits>
+					<Unit decimals="0">B</Unit>
+					<Unit decimals="3">kB</Unit>
+					<Unit decimals="6">MB</Unit>
+					<Unit decimals="9">GB</Unit>
+				</DynamicUnits>
+				<Range>
+					<Low>0</Low>
+				</Range>
+				<Positions>
+					<Position>
+						<Page>Decoder</Page>
+						<Column>0</Column>
+						<Row>0</Row>
+					</Position>
+				</Positions>
 			</Display>
 			<Measurement>
 				<Type>number</Type>
@@ -755,44 +754,16 @@
 	</Groups>
 
 	<Triggers>
-		<Trigger id="1">
-			<Name>encoderStatusChanged</Name>
-			<On id="51">parameter</On>
-			<Time>change</Time>
-			<Type>action</Type>
-			<Condition>
-				id:51 == 1
-			</Condition>
-			<Content>
-				<Id>1</Id>
-
-				<Id else="true">5</Id>
-			</Content>
-		</Trigger>
-		<Trigger id="2">
-			<Name>decoderStatusChanged</Name>
-			<On id="52">parameter</On>
-			<Time>change</Time>
-			<Type>action</Type>
-			<Condition>
-				id:52 == 1
-			</Condition>
-			<Content>
-				<Id>2</Id>
-				<Id else="true">4</Id>
-			</Content>
-		</Trigger>
 		<Trigger id="3">
 			<Name>onChangeReadEncoder</Name>
 			<On id="1">parameter</On>
-			<Condition>id:1 == 0</Condition>
 			<Time>change</Time>
 			<Type>trigger</Type>
 			<Content>
 				<Id>4</Id>
 				<Id>7</Id>
-				<Id else="true">5</Id>
-				<Id else="true">6</Id>
+				<Id>5</Id>
+				<Id>6</Id>
 			</Content>
 		</Trigger>
 		<Trigger id="4">
@@ -836,19 +807,6 @@
 
 			</Content>
 		</Trigger>
-		<Trigger id="8">
-			<Name>onChangeReadDecoder</Name>
-			<On id="2">parameter</On>
-			<Condition>id:2 == 0</Condition>
-			<Time>change</Time>
-			<Type>trigger</Type>
-			<Content>
-				<Id>5</Id>
-				<Id>6</Id>
-				<Id else="true">4</Id>
-				<Id else="true">7</Id>
-			</Content>
-		</Trigger>
 		<Trigger id="9">
 			<Name>onChangeAutoChromaWeight</Name>
 			<On id="54">parameter</On>
@@ -874,19 +832,13 @@
 			<On id="58">parameter</On>
 			<Time>change</Time>
 			<Type>action</Type>
-			<Condition>id:52 == 1</Condition>
+			<Condition>id:1 == 0</Condition>
 			<Content>
 				<Id>17</Id>
 			</Content>
 		</Trigger>
 	</Triggers>
-
 	<Actions>
-		<Action id="1">
-			<Name>disableDecoder</Name>
-			<On id="2">parameter</On>
-			<Type id="11">copy</Type>
-		</Action>
 		<Action id="2">
 			<Name>disableEncoder</Name>
 			<On id="1">parameter</On>
@@ -894,91 +846,97 @@
 		</Action>
 		<Action id="3">
 			<Name>disableCurrentCompressedBitrateEncoder</Name>
+			<Condition>id:1 == 0</Condition>
 			<On id="3">parameter</On>
 			<Type id="12">copy</Type>
 		</Action>
-		<Action id="4">
-			<Name>enableEncoder</Name>
-			<On id="1">parameter</On>
-			<Type id="13">copy</Type>
-		</Action>
-		<Action id="5">
-			<Name>enableDecoder</Name>
-			<On id="2">parameter</On>
-			<Type id="13">copy</Type>
-		</Action>
 		<Action id="6">
 			<Name>disableAutoChromaWeight</Name>
+			<Condition>id:1 == 0</Condition>
 			<On id="4">parameter</On>
 			<Type id="12">copy</Type>
 		</Action>
 		<Action id="7">
 			<Name>disableChromaWeight</Name>
+			<Condition>id:1 == 0</Condition>
 			<On id="5">parameter</On>
 			<Type id="12">copy</Type>
 		</Action>
 		<Action id="8">
 			<Name>disableLosslessMode</Name>
+			<Condition>id:1 == 0</Condition>
 			<On id="6">parameter</On>
 			<Type id="12">copy</Type>
 		</Action>
 		<Action id="9">
 			<Name>disableCurrentCompressedBitrateDecoder</Name>
+			<Condition>id:1 == 1</Condition>
 			<On id="7">parameter</On>
 			<Type id="12">copy</Type>
 		</Action>
 		<Action id="10">
 			<Name>disableProgressionOrder</Name>
+			<Condition>id:1 == 1</Condition>
 			<On id="58">parameter</On>
 			<Type id="12">copy</Type>
 		</Action>
 		<Action id="11">
 			<Name>disableCodeBlockWidth</Name>
+			<Condition><![CDATA[id:1 == 1]]></Condition>
 			<On id="9">parameter</On>
 			<Type id="12">copy</Type>
 		</Action>
 		<Action id="12">
 			<Name>disableCodeBlockHeight</Name>
+			<Condition>id:1 == 1</Condition>
 			<On id="10">parameter</On>
 			<Type id="12">copy</Type>
 		</Action>
 		<Action id="13">
 			<Name>enableCurrentCompressedBitrateEncoder</Name>
+			<Condition>id:1 == 1</Condition>
 			<On id="3">parameter</On>
 			<Type id="13">copy</Type>
 		</Action>
 		<Action id="14">
 			<Name>enableAutoChromaWeight</Name>
+			<Condition>id:1 == 1</Condition>
 			<On id="4">parameter</On>
 			<Type id="54">copy</Type>
 		</Action>
 		<Action id="15">
 			<Name>enableChromaWeight</Name>
+			<Condition>id:1 == 1</Condition>
 			<On id="5">parameter</On>
 			<Type id="14">copy</Type>
 		</Action>
 		<Action id="16">
 			<Name>enableCurrentCompressedBitrateDecoder</Name>
+			<Condition>id:1 == 0</Condition>
 			<On id="7">parameter</On>
 			<Type id="13">copy</Type>
 		</Action>
 		<Action id="17">
 			<Name>enableProgressionOrder</Name>
+			<Condition>id:1 == 0</Condition>
 			<On id="8">parameter</On>
 			<Type id="58">copy</Type>
 		</Action>
 		<Action id="18">
 			<Name>enableCodeBlockWidth</Name>
+			<Condition>id:1 == 0</Condition>
 			<On id="9">parameter</On>
 			<Type id="13">copy</Type>
 		</Action>
 		<Action id="19">
 			<Name>enableCodeBlockHeight</Name>
+			<Condition>id:1 == 0</Condition>
 			<On id="10">parameter</On>
 			<Type id="13">copy</Type>
 		</Action>
 		<Action id="20">
 			<Name>enableLosslessMode</Name>
+			<Condition>id:1 == 1</Condition>
 			<On id="6">parameter</On>
 			<Type id="56">copy</Type>
 		</Action>
@@ -1009,7 +967,7 @@
 				<Group>2</Group>
 			</Content>
 		</Timer>
-		
+
 	</Timers>
 
 	<PortSettings>
