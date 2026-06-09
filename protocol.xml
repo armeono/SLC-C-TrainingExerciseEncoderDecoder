@@ -26,11 +26,11 @@
 		<Pages>
 			<Page>
 				<Name>Encoder</Name>
-				<Visibility default="true" overridePID="1" value="0"></Visibility>
+				<Visibility default="true" overridePID="1001" value="0"></Visibility>
 			</Page>
 			<Page>
 				<Name>Decoder</Name>
-				<Visibility default="false" overridePID="1" value="0"></Visibility>
+				<Visibility default="false" overridePID="1001" value="0"></Visibility>
 			</Page>
 		</Pages>
 	</Display>
@@ -41,7 +41,7 @@
 	</Compliancies>
 
 	<Params>
-		<Param id="1" save="true">
+		<Param id="1001" save="true">
 			<Name>deviceMode</Name>
 			<Description>Device Mode</Description>
 			<Type>read</Type>
@@ -73,17 +73,17 @@
 				<Type>discreet</Type>
 				<Discreets>
 					<Discreet>
-						<Display>Encoder</Display>
-						<Value>1</Value>
-					</Discreet>
-					<Discreet>
 						<Display>Decoder</Display>
 						<Value>0</Value>
+					</Discreet>
+					<Discreet>
+						<Display>Encoder</Display>
+						<Value>1</Value>
 					</Discreet>
 				</Discreets>
 			</Measurement>
 		</Param>
-		<Param id="51" setter="true">
+		<Param id="1051" setter="true">
 			<Name>deviceMode</Name>
 			<Description>Device Mode</Description>
 			<Type>write</Type>
@@ -106,24 +106,24 @@
 				<Type>togglebutton</Type>
 				<Discreets>
 					<Discreet>
-						<Display>Encoder</Display>
-						<Value>1</Value>
-					</Discreet>
-					<Discreet>
 						<Display>Decoder</Display>
 						<Value>0</Value>
+					</Discreet>
+					<Discreet>
+						<Display>Encoder</Display>
+						<Value>1</Value>
 					</Discreet>
 				</Discreets>
 			</Measurement>
 		</Param>
 
-		<Param id="3" trending="true">
+		<Param id="1003" trending="true">
 			<Name>encoderCurrentCompressedBitrate</Name>
 			<Description>Current Compressed Bitrate (Encoder)</Description>
 			<Type>read</Type>
 			<Information>
 				<Subtext>Current Compressed Bitrate for Encoder</Subtext>
-			</Information>
+			</Information> 
 			<Interprete>
 				<RawType>numeric text</RawType>
 				<Type>double</Type>
@@ -171,7 +171,7 @@
 
 		</Param>
 
-		<Param id="4" trending="true">
+		<Param id="1004" trending="true">
 			<Name>autoChromaWeight</Name>
 			<Description>Auto Chroma Weight</Description>
 			<Type>read</Type>
@@ -214,17 +214,17 @@
 				<Type>discreet</Type>
 				<Discreets>
 					<Discreet>
-						<Display>Enabled</Display>
-						<Value>1</Value>
-					</Discreet>
-					<Discreet>
 						<Display>Disabled</Display>
 						<Value>0</Value>
+					</Discreet>
+					<Discreet>
+						<Display>Enabled</Display>
+						<Value>1</Value>
 					</Discreet>
 				</Discreets>
 			</Measurement>
 		</Param>
-		<Param id="54">
+		<Param id="1054">
 			<Name>autoChromaWeight</Name>
 			<Description>Auto Chroma Weight</Description>
 			<Type>write</Type>
@@ -247,18 +247,18 @@
 				<Type>togglebutton</Type>
 				<Discreets>
 					<Discreet>
-						<Display>Enabled</Display>
-						<Value>1</Value>
-					</Discreet>
-					<Discreet>
 						<Display>Disabled</Display>
 						<Value>0</Value>
+					</Discreet>
+					<Discreet>
+						<Display>Enabled</Display>
+						<Value>1</Value>
 					</Discreet>
 				</Discreets>
 			</Measurement>
 		</Param>
 
-		<Param id="5" trending="true">
+		<Param id="1005" trending="true">
 			<Name>chromaWeight</Name>
 			<Description>Chroma Weight</Description>
 			<Type>read</Type>
@@ -278,6 +278,7 @@
 			</Interprete>
 			<Alarm>
 				<Monitored>true</Monitored>
+				<Normal>12</Normal>
 			</Alarm>
 			<Display>
 				<RTDisplay>true</RTDisplay>
@@ -299,7 +300,7 @@
 			</Measurement>
 		</Param>
 
-		<Param id="6" trending="true">
+		<Param id="1006" trending="true">
 			<Name>losslessMode</Name>
 			<Description>Lossless Mode</Description>
 			<Type>read</Type>
@@ -320,6 +321,7 @@
 			</Interprete>
 			<Alarm>
 				<Monitored>true</Monitored>
+				<Normal>1</Normal>
 			</Alarm>
 			<Display>
 				<RTDisplay>true</RTDisplay>
@@ -345,7 +347,7 @@
 				</Discreets>
 			</Measurement>
 		</Param>
-		<Param id="56">
+		<Param id="1056">
 			<Name>losslessMode</Name>
 			<Description>Lossless Mode</Description>
 			<Type>write</Type>
@@ -368,18 +370,18 @@
 				<Type>togglebutton</Type>
 				<Discreets>
 					<Discreet>
-						<Display>Enabled</Display>
-						<Value>1</Value>
-					</Discreet>
-					<Discreet>
 						<Display>Disabled</Display>
 						<Value>0</Value>
+					</Discreet>
+					<Discreet>
+						<Display>Enabled</Display>
+						<Value>1</Value>
 					</Discreet>
 				</Discreets>
 			</Measurement>
 		</Param>
 
-		<Param id="7" trending="true">
+		<Param id="1007" trending="true">
 			<Name>decoderCurrentCompressedBitrate</Name>
 			<Description>Current Compressed Bitrate (Decoder)</Description>
 			<Type>read</Type>
@@ -400,6 +402,7 @@
 			</Interprete>
 			<Alarm>
 				<Monitored>true</Monitored>
+				<Normal>1</Normal>
 			</Alarm>
 			<Display>
 				<RTDisplay>true</RTDisplay>
@@ -421,7 +424,7 @@
 			</Measurement>
 		</Param>
 
-		<Param id="8" trending="true">
+		<Param id="1008" trending="true">
 			<Name>progressionOrder</Name>
 			<Description>Progression Order</Description>
 			<Type>read</Type>
@@ -441,6 +444,7 @@
 			</Interprete>
 			<Alarm>
 				<Monitored>true</Monitored>
+				<Normal>0</Normal>
 			</Alarm>
 			<Display>
 				<RTDisplay>true</RTDisplay>
@@ -478,7 +482,7 @@
 				</Discreets>
 			</Measurement>
 		</Param>
-		<Param id="58">
+		<Param id="1058">
 			<Name>progressionOrder</Name>
 			<Description>Progression Order</Description>
 			<Type>write</Type>
@@ -524,7 +528,7 @@
 			</Measurement>
 		</Param>
 
-		<Param id="9" trending="true">
+		<Param id="1009" trending="true">
 			<Name>codeBlockWidth</Name>
 			<Description>Code Block Width</Description>
 			<Type>read</Type>
@@ -545,6 +549,7 @@
 			</Interprete>
 			<Alarm>
 				<Monitored>true</Monitored>
+				<Normal>1</Normal>
 			</Alarm>
 			<Display>
 				<RTDisplay>true</RTDisplay>
@@ -564,7 +569,7 @@
 				<Type>number</Type>
 			</Measurement>
 		</Param>
-		<Param id="10" trending="true">
+		<Param id="1010" trending="true">
 			<Name>codeBlockHeight</Name>
 			<Description>Code Block Height</Description>
 			<Type>read</Type>
@@ -585,6 +590,7 @@
 			</Interprete>
 			<Alarm>
 				<Monitored>true</Monitored>
+				<Normal>1</Normal>
 			</Alarm>
 			<Display>
 				<RTDisplay>true</RTDisplay>
@@ -604,7 +610,7 @@
 				<Type>number</Type>
 			</Measurement>
 		</Param>
-		<Param id="11">
+		<Param id="1">
 			<Name>fixedZeroValue</Name>
 			<Description>Fixed 0 Value</Description>
 			<Type>read</Type>
@@ -614,8 +620,11 @@
 				<LengthType>next param</LengthType>
 				<Value>0</Value>
 			</Interprete>
+			<Display>
+				<RTDisplay>false</RTDisplay>
+			</Display>
 		</Param>
-		<Param id="12">
+		<Param id="2">
 			<Name>placeholderNotAvailableValue</Name>
 			<Description>Placeholder Not Available Value</Description>
 			<Type>read</Type>
@@ -627,7 +636,7 @@
 				<DefaultValue>-1</DefaultValue>
 			</Interprete>
 		</Param>
-		<Param id="13">
+		<Param id="3">
 			<Name>fixedOneValue</Name>
 			<Description>Fixed 1 Value</Description>
 			<Type>fixed</Type>
@@ -639,7 +648,7 @@
 				<Value>0x01</Value>
 			</Interprete>
 		</Param>
-		<Param id="14">
+		<Param id="4">
 			<Name>chromaWeightDefaultValue</Name>
 			<Description>Chroma Weight Default Value</Description>
 			<Type>fixed</Type>
@@ -651,7 +660,7 @@
 				<Value>0x0C</Value>
 			</Interprete>
 		</Param>
-		<Param id="15" trending="false">
+		<Param id="1015" trending="false">
 			<Name>totalEncoderTx</Name>
 			<Description>Total Transmitted Bytes Encoder</Description>
 			<Type>read</Type>
@@ -665,6 +674,7 @@
 			</Interprete>
 			<Alarm>
 				<Monitored>true</Monitored>
+				<Normal>1000</Normal>
 			</Alarm>
 			<Display>
 				<RTDisplay>true</RTDisplay>
@@ -690,7 +700,7 @@
 				<Type>number</Type>
 			</Measurement>
 		</Param>
-		<Param id="16" trending="false">
+		<Param id="1016" trending="false">
 			<Name>totalDecoderTx</Name>
 			<Description>Total Transmitted Bytes Decoder</Description>
 			<Type>read</Type>
@@ -704,6 +714,7 @@
 			</Interprete>
 			<Alarm>
 				<Monitored>true</Monitored>
+				<Normal>1000</Normal>
 			</Alarm>
 			<Display>
 				<RTDisplay>true</RTDisplay>
@@ -756,7 +767,7 @@
 	<Triggers>
 		<Trigger id="3">
 			<Name>onChangeReadEncoder</Name>
-			<On id="1">parameter</On>
+			<On id="1001">parameter</On>
 			<Time>change</Time>
 			<Type>trigger</Type>
 			<Content>
@@ -809,150 +820,145 @@
 		</Trigger>
 		<Trigger id="9">
 			<Name>onChangeAutoChromaWeight</Name>
-			<On id="54">parameter</On>
+			<On id="1054">parameter</On>
 			<Time>change</Time>
 			<Type>action</Type>
-			<Condition>id:51 == 1</Condition>
+			<Condition>id:1051 == 1</Condition>
 			<Content>
 				<Id>14</Id>
 			</Content>
 		</Trigger>
 		<Trigger id="10">
 			<Name>onChangeLosslessMode</Name>
-			<On id="56">parameter</On>
+			<On id="1056">parameter</On>
 			<Time>change</Time>
 			<Type>action</Type>
-			<Condition>id:51 == 1</Condition>
+			<Condition>id:1051 == 1</Condition>
 			<Content>
 				<Id>20</Id>
 			</Content>
 		</Trigger>
 		<Trigger id="11">
 			<Name>onChangeProgressionOrder</Name>
-			<On id="58">parameter</On>
+			<On id="1058">parameter</On>
 			<Time>change</Time>
 			<Type>action</Type>
-			<Condition>id:1 == 0</Condition>
+			<Condition>id:1001 == 0</Condition>
 			<Content>
 				<Id>17</Id>
 			</Content>
 		</Trigger>
 	</Triggers>
 	<Actions>
-		<Action id="2">
-			<Name>disableEncoder</Name>
-			<On id="1">parameter</On>
-			<Type id="11">copy</Type>
-		</Action>
 		<Action id="3">
 			<Name>disableCurrentCompressedBitrateEncoder</Name>
-			<Condition>id:1 == 0</Condition>
-			<On id="3">parameter</On>
-			<Type id="12">copy</Type>
+			<Condition>id:1001 == 0</Condition>
+			<On id="1003">parameter</On>
+			<Type id="2">copy</Type>
 		</Action>
 		<Action id="6">
 			<Name>disableAutoChromaWeight</Name>
-			<Condition>id:1 == 0</Condition>
-			<On id="4">parameter</On>
-			<Type id="12">copy</Type>
+			<Condition>id:1001 == 0</Condition>
+			<On id="1004">parameter</On>
+			<Type id="2">copy</Type>
 		</Action>
 		<Action id="7">
 			<Name>disableChromaWeight</Name>
-			<Condition>id:1 == 0</Condition>
-			<On id="5">parameter</On>
-			<Type id="12">copy</Type>
+			<Condition>id:1001 == 0</Condition>
+			<On id="1005">parameter</On>
+			<Type id="2">copy</Type>
 		</Action>
 		<Action id="8">
 			<Name>disableLosslessMode</Name>
-			<Condition>id:1 == 0</Condition>
-			<On id="6">parameter</On>
-			<Type id="12">copy</Type>
+			<Condition>id:1001 == 0</Condition>
+			<On id="1006">parameter</On>
+			<Type id="2">copy</Type>
 		</Action>
 		<Action id="9">
 			<Name>disableCurrentCompressedBitrateDecoder</Name>
-			<Condition>id:1 == 1</Condition>
-			<On id="7">parameter</On>
-			<Type id="12">copy</Type>
+			<Condition>id:1001 == 1</Condition>
+			<On id="1007">parameter</On>
+			<Type id="2">copy</Type>
 		</Action>
 		<Action id="10">
 			<Name>disableProgressionOrder</Name>
-			<Condition>id:1 == 1</Condition>
-			<On id="58">parameter</On>
-			<Type id="12">copy</Type>
+			<Condition>id:1001 == 1</Condition>
+			<On id="1058">parameter</On>
+			<Type id="2">copy</Type>
 		</Action>
 		<Action id="11">
 			<Name>disableCodeBlockWidth</Name>
-			<Condition><![CDATA[id:1 == 1]]></Condition>
-			<On id="9">parameter</On>
-			<Type id="12">copy</Type>
+			<Condition><![CDATA[id:1001 == 1]]></Condition>
+			<On id="1009">parameter</On>
+			<Type id="2">copy</Type>
 		</Action>
 		<Action id="12">
 			<Name>disableCodeBlockHeight</Name>
-			<Condition>id:1 == 1</Condition>
-			<On id="10">parameter</On>
-			<Type id="12">copy</Type>
+			<Condition>id:1001 == 1</Condition>
+			<On id="1010">parameter</On>
+			<Type id="2">copy</Type>
 		</Action>
 		<Action id="13">
 			<Name>enableCurrentCompressedBitrateEncoder</Name>
-			<Condition>id:1 == 1</Condition>
-			<On id="3">parameter</On>
-			<Type id="13">copy</Type>
+			<Condition>id:1001 == 1</Condition>
+			<On id="1003">parameter</On>
+			<Type id="3">copy</Type>
 		</Action>
 		<Action id="14">
 			<Name>enableAutoChromaWeight</Name>
-			<Condition>id:1 == 1</Condition>
-			<On id="4">parameter</On>
-			<Type id="54">copy</Type>
+			<Condition>id:1001 == 1</Condition>
+			<On id="1004">parameter</On>
+			<Type id="1054">copy</Type>
 		</Action>
 		<Action id="15">
 			<Name>enableChromaWeight</Name>
-			<Condition>id:1 == 1</Condition>
-			<On id="5">parameter</On>
-			<Type id="14">copy</Type>
+			<Condition>id:1001 == 1</Condition>
+			<On id="1005">parameter</On>
+			<Type id="4">copy</Type>
 		</Action>
 		<Action id="16">
 			<Name>enableCurrentCompressedBitrateDecoder</Name>
-			<Condition>id:1 == 0</Condition>
-			<On id="7">parameter</On>
-			<Type id="13">copy</Type>
+			<Condition>id:1001 == 0</Condition>
+			<On id="1007">parameter</On>
+			<Type id="3">copy</Type>
 		</Action>
 		<Action id="17">
 			<Name>enableProgressionOrder</Name>
-			<Condition>id:1 == 0</Condition>
-			<On id="8">parameter</On>
-			<Type id="58">copy</Type>
+			<Condition>id:1001 == 0</Condition>
+			<On id="1008">parameter</On>
+			<Type id="1058">copy</Type>
 		</Action>
 		<Action id="18">
 			<Name>enableCodeBlockWidth</Name>
-			<Condition>id:1 == 0</Condition>
-			<On id="9">parameter</On>
-			<Type id="13">copy</Type>
+			<Condition>id:1001 == 0</Condition>
+			<On id="1009">parameter</On>
+			<Type id="3">copy</Type>
 		</Action>
 		<Action id="19">
 			<Name>enableCodeBlockHeight</Name>
-			<Condition>id:1 == 0</Condition>
-			<On id="10">parameter</On>
-			<Type id="13">copy</Type>
+			<Condition>id:1001 == 0</Condition>
+			<On id="1010">parameter</On>
+			<Type id="3">copy</Type>
 		</Action>
 		<Action id="20">
 			<Name>enableLosslessMode</Name>
-			<Condition>id:1 == 1</Condition>
-			<On id="6">parameter</On>
-			<Type id="56">copy</Type>
+			<Condition>id:1001 == 1</Condition>
+			<On id="1006">parameter</On>
+			<Type id="1056">copy</Type>
 		</Action>
 		<Action id="21">
 			<Name>setChromaWeightDefaultValue</Name>
-			<On id="5">parameter</On>
-			<Type id="14">copy</Type>
+			<On id="1005">parameter</On>
+			<Type id="4">copy</Type>
 		</Action>
 		<Action id="22">
 			<Name>incrementEncoderTx</Name>
-			<On id="15">parameter</On>
+			<On id="1015">parameter</On>
 			<Type>increment</Type>
 		</Action>
 		<Action id="23">
 			<Name>incrementDecoderTx</Name>
-			<On id="16">parameter</On>
+			<On id="1016">parameter</On>
 			<Type>increment</Type>
 		</Action>
 	</Actions>
@@ -970,8 +976,6 @@
 
 	</Timers>
 
-	<PortSettings>
-	</PortSettings>
 
 	<VersionHistory>
 		<Branches>
